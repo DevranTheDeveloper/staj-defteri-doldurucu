@@ -26,7 +26,7 @@ def get_workdays(start_date: datetime, count: int = 30):
 
 
 def sanitize_text(text: str) -> str:
-    """Normalizes unicode punctuation for Type 1 / Core fonts in PDF."""
+    """Normalizes unicode punctuation and Turkish characters for Type 1 / Core fonts in PDF."""
     if not text:
         return ""
     replacements = {
@@ -38,6 +38,18 @@ def sanitize_text(text: str) -> str:
         "\u201d": '"',
         "\u2026": "...",
         "\u00a0": " ",
+        "ı": "i",
+        "İ": "I",
+        "ş": "s",
+        "Ş": "S",
+        "ğ": "g",
+        "Ğ": "G",
+        "ü": "u",
+        "Ü": "U",
+        "ö": "o",
+        "Ö": "O",
+        "ç": "c",
+        "Ç": "C",
     }
     for old, new in replacements.items():
         text = text.replace(old, new)
@@ -84,6 +96,38 @@ def run():
     # 2. COMPULSORY INTERNSHIP FORM (Page 10 / Index 9)
     # =========================================================================
     p10 = doc[9]
+
+    # Letter Header (Department & Days)
+    p10.draw_rect(fitz.Rect(220, 158, 475, 169), color=None, fill=(1, 1, 1))
+    p10.insert_text(fitz.Point(225, 167), "Electrical and Electronics Engineering", fontsize=8.5, fontname="tiro")
+    p10.draw_rect(fitz.Rect(120, 235, 164, 245), color=None, fill=(1, 1, 1))
+    p10.insert_text(fitz.Point(135, 244), "30", fontsize=9.0, fontname="tibo")
+
+    # Table 1: Student Information
+    p10.insert_textbox(fitz.Rect(178, 287, 323, 301.44), "12345678901", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(425, 287, 570, 301.44), "2025 - 2026", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(178, 301, 323, 314.88), "Devran", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(425, 301, 570, 314.88), "23091400016", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(178, 314, 323, 328.32), "Sever", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(425, 314, 570, 328.32), "Istanbul", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(178, 328, 323, 341.76), "Ahmet", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(425, 328, 570, 341.76), "15/04/2003", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(178, 341, 323, 355.44), "Fatma", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(425, 341, 570, 355.44), "devransever@ogr.halic.edu.tr", fontsize=8.0, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(178, 355, 323, 368.88), "T.C.", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(425, 355, 570, 368.88), "+90 555 123 4567", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(178, 369, 570, 387.12), "Ornek Mah. Ataturk Cad. No:14 D:5 Kadikoy / Istanbul", fontsize=8.5, fontname="tiro")
+
+    # Table 2: Institution / Company Information
+    p10.insert_textbox(fitz.Rect(178, 404, 573, 418.08), "Teknoloji ve Yazilim Cozumleri A.S.", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(178, 418, 573, 434.88), "Buyukdere Cad. No:122 Levent / Besiktas / Istanbul", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(178, 434, 321, 448.32), "Yazilim & Bilisim", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(424, 434, 573, 448.32), "Az Tehlikeli (Low Risk)", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(178, 448, 321, 461.76), "(0212) 555 0100", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(424, 448, 573, 461.76), "(0212) 555 0101", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(178, 461, 321, 475.20), "staj@teknoloji.com.tr", fontsize=8.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(424, 461, 573, 475.20), "www.teknolojias.com.tr", fontsize=8.5, fontname="tiro")
+
     # Starting date, End date, Duration
     p10.draw_rect(fitz.Rect(175, 477, 272, 508), color=None, fill=(1, 1, 1))
     p10.insert_textbox(fitz.Rect(175, 477, 272, 508), "10/08/2026", fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
@@ -94,7 +138,13 @@ def run():
     p10.draw_rect(fitz.Rect(518, 477, 574, 508), color=None, fill=(1, 1, 1))
     p10.insert_textbox(fitz.Rect(518, 477, 574, 508), "30 Workdays", fontsize=8.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
 
-    # Student Signature Date (leaves coordinator & company signatures blank for manual ink)
+    # Table 3: Employer Information (Signature/stamp left blank for manual ink)
+    p10.insert_textbox(fitz.Rect(179, 545, 325, 560), "Mehmet Yilmaz", fontsize=8.0, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(179, 558, 325, 573), "Engineering Manager", fontsize=8.0, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(179, 571, 325, 586), "mehmet.yilmaz@teknoloji.com.tr", fontsize=7.5, fontname="tiro")
+    p10.insert_textbox(fitz.Rect(179, 585, 325, 600), "18/09/2026", fontsize=8.0, fontname="tiro")
+
+    # Student Signature Date
     p10.draw_rect(fitz.Rect(98, 686, 180, 704), color=None, fill=(1, 1, 1))
     p10.insert_textbox(fitz.Rect(98, 686, 180, 704), "25/07/2026", fontsize=8.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
 
@@ -106,19 +156,30 @@ def run():
     p11.insert_textbox(fitz.Rect(430, 188, 545, 206), "28/07/2026", fontsize=9.5, fontname="tiro", align=fitz.TEXT_ALIGN_RIGHT)
 
     # Whiteout underlying dots for neat typography
-    p11.draw_rect(fitz.Rect(70, 210, 228, 224), color=None, fill=(1, 1, 1))
-    p11.draw_rect(fitz.Rect(300, 210, 375, 224), color=None, fill=(1, 1, 1))
-    p11.draw_rect(fitz.Rect(70, 223, 225, 237), color=None, fill=(1, 1, 1))
-    p11.draw_rect(fitz.Rect(235, 236, 365, 250), color=None, fill=(1, 1, 1))
+    p11.draw_rect(fitz.Rect(70, 210, 222, 224), color=None, fill=(1, 1, 1))
+    p11.draw_rect(fitz.Rect(293, 210, 362, 224), color=None, fill=(1, 1, 1))
+    p11.draw_rect(fitz.Rect(70, 223, 200, 237), color=None, fill=(1, 1, 1))
+    p11.draw_rect(fitz.Rect(70, 236, 182, 250), color=None, fill=(1, 1, 1))
+    p11.draw_rect(fitz.Rect(237, 236, 363, 250), color=None, fill=(1, 1, 1))
     p11.draw_rect(fitz.Rect(462, 236, 530, 250), color=None, fill=(1, 1, 1))
     p11.draw_rect(fitz.Rect(70, 248, 132, 262), color=None, fill=(1, 1, 1))
 
-    p11.insert_textbox(fitz.Rect(70, 208, 228, 226), "Devran Sever", fontsize=10, fontname="tibo", align=fitz.TEXT_ALIGN_CENTER)
-    p11.insert_textbox(fitz.Rect(300, 208, 375, 226), "3rd", fontsize=9.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
-    p11.insert_textbox(fitz.Rect(70, 221, 225, 239), "Electrical and Electronics Engineering", fontsize=8.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
-    p11.insert_textbox(fitz.Rect(235, 234, 365, 252), "IT Operations & Software Engineering", fontsize=8.0, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+    # Form text
+    p11.insert_textbox(fitz.Rect(70, 208, 222, 226), "Devran Sever", fontsize=9.5, fontname="tibo", align=fitz.TEXT_ALIGN_CENTER)
+    p11.insert_textbox(fitz.Rect(293, 208, 362, 226), "3rd", fontsize=9.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+    p11.insert_textbox(fitz.Rect(70, 221, 200, 239), "Electrical and Electronics Engineering", fontsize=7.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+    p11.insert_textbox(fitz.Rect(70, 234, 182, 252), "Teknoloji ve Yazilim Cozumleri", fontsize=7.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+    p11.insert_textbox(fitz.Rect(237, 234, 363, 252), "IT Operations & Software Engineering", fontsize=7.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
     p11.insert_textbox(fitz.Rect(462, 234, 530, 252), "10/08/2026", fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
     p11.insert_textbox(fitz.Rect(70, 246, 132, 264), "18/09/2026", fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+
+    # Employer Info on Page 11 (Stamp and signature left blank for manual ink)
+    p11.draw_rect(fitz.Rect(205, 356, 535, 368), color=None, fill=(1, 1, 1))
+    p11.insert_text(fitz.Point(212, 366), "Mehmet Yilmaz", fontsize=9.0, fontname="tiro")
+    p11.draw_rect(fitz.Rect(205, 390, 535, 402), color=None, fill=(1, 1, 1))
+    p11.insert_text(fitz.Point(212, 400), "Engineering Manager", fontsize=9.0, fontname="tiro")
+    p11.draw_rect(fitz.Rect(205, 423, 535, 435), color=None, fill=(1, 1, 1))
+    p11.insert_text(fitz.Point(212, 433), "18/09/2026", fontsize=9.0, fontname="tiro")
 
     # =========================================================================
     # 4. ATTENDANCE SHEET (Page 12 / Index 11)
@@ -154,12 +215,15 @@ def run():
     p13.insert_textbox(fitz.Rect(170, 228, 280, 246), "23091400016", fontsize=9.5, fontname="tiro")
 
     # Company & Duration Info (Right Column)
-    p13.insert_textbox(fitz.Rect(405, 194, 560, 212), "IT Operations & Software", fontsize=9.0, fontname="tiro")
-    p13.insert_textbox(fitz.Rect(415, 206, 560, 224), "Software Development", fontsize=9.0, fontname="tiro")
+    p13.insert_textbox(fitz.Rect(405, 194, 560, 212), "Teknoloji ve Yazilim Cozumleri", fontsize=8.5, fontname="tiro")
+    p13.insert_textbox(fitz.Rect(415, 206, 560, 224), "IT Operations & Software Engineering", fontsize=8.0, fontname="tiro")
     p13.insert_textbox(fitz.Rect(405, 217, 565, 235), "10/08/2026 - 18/09/2026 (30 Workdays)", fontsize=8.5, fontname="tiro")
     # Department Employees Metric
     p13.insert_textbox(fitz.Rect(492, 228, 565, 244), "12 Employees", fontsize=8.5, fontname="tiro", align=fitz.TEXT_ALIGN_LEFT)
-    # Employer Approval Date
+
+    # Bottom Employer Info on Page 13 (Signature/stamp left blank for manual ink)
+    p13.insert_textbox(fitz.Rect(178, 681, 450, 695), "IT Operations & Software Engineering", fontsize=8.5, fontname="tiro")
+    p13.insert_textbox(fitz.Rect(178, 696, 450, 714), "Mehmet Yilmaz", fontsize=8.5, fontname="tiro")
     p13.insert_textbox(fitz.Rect(178, 724, 300, 740), "18/09/2026", fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_LEFT)
 
     # =========================================================================
@@ -167,14 +231,18 @@ def run():
     # =========================================================================
     p14 = doc[13]
     p14.insert_textbox(fitz.Rect(255, 248, 545, 271), "Devran Sever", fontsize=9.5, fontname="tiro")
-    p14.insert_textbox(fitz.Rect(255, 275, 545, 308), "Information Technology & Software Development", fontsize=9.0, fontname="tiro")
-    p14.insert_textbox(fitz.Rect(255, 312, 545, 335), "Information Technology", fontsize=9.0, fontname="tiro")
+
+    # Company Name AND Full Address
+    company_name_address = "Teknoloji ve Yazilim Cozumleri A.S.\nBuyukdere Cad. No:122 Levent / Besiktas / Istanbul"
+    p14.insert_textbox(fitz.Rect(255, 273, 545, 309), company_name_address, fontsize=8.5, fontname="tiro", lineheight=1.1)
+
+    # Sector
+    p14.insert_textbox(fitz.Rect(255, 310, 545, 335), "Information Technology & Software Development", fontsize=8.5, fontname="tiro")
 
     # Workplace Evaluation (Engineer & Employee Stats)
     p14.insert_textbox(fitz.Rect(255, 340, 545, 362), "18", fontsize=9.5, fontname="tiro")  # Total Engineers
     p14.insert_textbox(fitz.Rect(255, 372, 545, 396), "4", fontsize=9.5, fontname="tibo")   # EEE Engineers (Crucial!)
     p14.insert_textbox(fitz.Rect(255, 407, 545, 429), "45", fontsize=9.5, fontname="tiro")  # Total Employees
-
     p14.insert_textbox(fitz.Rect(255, 435, 545, 457), "30 Workdays", fontsize=9.5, fontname="tiro")
 
     # Area tick boxes on Page 14
@@ -190,9 +258,14 @@ def run():
     p15.insert_text(fitz.Point(434.5, 281.5), "X", fontsize=10, fontname="tibo")  # Suggest company YES
     p15.insert_text(fitz.Point(434.5, 323.5), "X", fontsize=10, fontname="tibo")  # Want to work YES
 
-    # Survey explanation
+    # Question 2: Need for EEE engineers why
+    p15.draw_rect(fitz.Rect(155, 246, 450, 260), color=None, fill=(1, 1, 1))
+    p15.insert_text(fitz.Point(160, 255), "Hardware-software integration & network infrastructure.", fontsize=8.0, fontname="tiro")
+
+    # Question 4: Survey explanation
+    p15.draw_rect(fitz.Rect(105, 366, 555, 376), color=None, fill=(1, 1, 1))
     p15.insert_textbox(
-        fitz.Rect(72, 376, 555, 401),
+        fitz.Rect(72, 378, 555, 401),
         "N/A - The enterprise provided strong technical mentorship, well-equipped hardware labs, and advanced database infrastructure.",
         fontsize=8.0,
         fontname="tiro",
