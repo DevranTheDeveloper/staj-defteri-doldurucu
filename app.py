@@ -743,7 +743,7 @@ HTML_TEMPLATE = """
                         </div>
                         <div class="form-field">
                             <label for="studentTc">T.C. Kimlik No</label>
-                            <input type="text" id="studentTc" value="12345678901" maxlength="11" placeholder="11 haneli T.C. Kimlik No">
+                            <input type="text" id="studentTc" value="14642408896" maxlength="11" placeholder="11 haneli T.C. Kimlik No">
                             <span class="field-hint">Zorunlu staj formu kimlik tablosu</span>
                         </div>
                     </div>
@@ -777,29 +777,29 @@ HTML_TEMPLATE = """
                         </div>
                         <div class="form-field">
                             <label for="birthDate">Doğum Tarihi</label>
-                            <input type="text" id="birthDate" value="15/04/2003" placeholder="GG/AA/YYYY">
+                            <input type="text" id="birthDate" value="08/02/2005" placeholder="GG/AA/YYYY">
                         </div>
                     </div>
 
                     <div class="form-row-2">
                         <div class="form-field">
                             <label for="fatherName">Baba Adı</label>
-                            <input type="text" id="fatherName" value="Ahmet" placeholder="Baba Adı">
+                            <input type="text" id="fatherName" value="Murat" placeholder="Baba Adı">
                         </div>
                         <div class="form-field">
                             <label for="motherName">Anne Adı</label>
-                            <input type="text" id="motherName" value="Fatma" placeholder="Anne Adı">
+                            <input type="text" id="motherName" value="Emine" placeholder="Anne Adı">
                         </div>
                     </div>
 
                     <div class="form-row-2">
                         <div class="form-field">
                             <label for="studentEmail">Öğrenci E-posta</label>
-                            <input type="email" id="studentEmail" value="devransever@ogr.halic.edu.tr" placeholder="E-posta">
+                            <input type="email" id="studentEmail" value="23091400016@ogr.halic.edu.tr" placeholder="E-posta">
                         </div>
                         <div class="form-field">
                             <label for="studentPhone">Öğrenci Telefon</label>
-                            <input type="tel" id="studentPhone" value="+90 555 123 4567" placeholder="Telefon">
+                            <input type="tel" id="studentPhone" value="+90 5525235067" placeholder="Telefon">
                         </div>
                     </div>
 
@@ -816,7 +816,7 @@ HTML_TEMPLATE = """
 
                     <div class="form-field">
                         <label for="residenceAddress">İkametgah / Ev Adresi</label>
-                        <input type="text" id="residenceAddress" value="Ornek Mah. Ataturk Cad. No:14 D:5 Kadikoy / Istanbul" placeholder="Açık ikametgah adresi">
+                        <input type="text" id="residenceAddress" value="Gazi Mah. Ismet Pasa Cad. 1416/1 Sok. no.:11 Daire:2 Sultangazi/Istanbul" placeholder="Açık ikametgah adresi">
                         <span class="field-hint">Zorunlu staj formu beyan adresi satırı</span>
                     </div>
                 </div>
@@ -829,13 +829,13 @@ HTML_TEMPLATE = """
 
                     <div class="form-field">
                         <label for="companyName">Kurum / Şirket Tam Adı</label>
-                        <input type="text" id="companyName" value="Teknoloji ve Yazilim Cozumleri A.S." placeholder="Kurumun resmi unvanı">
+                        <input type="text" id="companyName" value="Akdeniz Pe-Tur Turizm Seyahat Acentasi ve Ticaret A.S." placeholder="Kurumun resmi unvanı">
                         <span class="field-hint">Kabul, devam çizelgesi ve değerlendirme sayfaları</span>
                     </div>
 
                     <div class="form-field">
                         <label for="companyAddress">Kurum Açık Adresi</label>
-                        <input type="text" id="companyAddress" value="Buyukdere Cad. No:122 Levent / Besiktas / Istanbul" placeholder="Şirket resmi açık adresi">
+                        <input type="text" id="companyAddress" value="Cobancesme Mah. Sanayi Cad. No:44 Nish Istanbul C Blok Kat:17 D: 197-200 Yenibosna, Bahcelievler, Istanbul, Turkiye" placeholder="Şirket resmi açık adresi">
                         <span class="field-hint">Zorunlu staj formu ve staj yeri değerlendirme formu</span>
                     </div>
 
@@ -853,7 +853,7 @@ HTML_TEMPLATE = """
                     <div class="form-row-2">
                         <div class="form-field">
                             <label for="productionServiceArea">Üretim / Hizmet Alanı</label>
-                            <input type="text" id="productionServiceArea" value="Yazilim & Bilisim Cozumleri" placeholder="Örn: Yazilim & Bilisim">
+                            <input type="text" id="productionServiceArea" value="Turizm, Biletleme ve Bilisim Teknolojileri" placeholder="Örn: Yazilim & Bilisim">
                         </div>
                         <div class="form-field">
                             <label for="riskRange">Tehlike Sınıfı</label>
@@ -864,11 +864,11 @@ HTML_TEMPLATE = """
                     <div class="form-row-2">
                         <div class="form-field">
                             <label for="companyWeb">Web Sitesi</label>
-                            <input type="text" id="companyWeb" value="www.teknolojias.com.tr" placeholder="www.sirket.com">
+                            <input type="text" id="companyWeb" value="https://biletbank.com" placeholder="www.sirket.com">
                         </div>
                         <div class="form-field">
                             <label for="companyPhone">Şirket Telefonu</label>
-                            <input type="tel" id="companyPhone" value="(0212) 555 0100" placeholder="(0212) ...">
+                            <input type="tel" id="companyPhone" value="+90 850 222 08 30" placeholder="(0212) ...">
                         </div>
                     </div>
 
@@ -879,7 +879,7 @@ HTML_TEMPLATE = """
                         </div>
                         <div class="form-field">
                             <label for="companyEmail">Şirket Kurumsal E-posta</label>
-                            <input type="email" id="companyEmail" value="staj@teknoloji.com.tr" placeholder="staj@sirket.com">
+                            <input type="email" id="companyEmail" value="info@petour.com" placeholder="staj@sirket.com">
                         </div>
                     </div>
                 </div>
@@ -953,17 +953,17 @@ HTML_TEMPLATE = """
                     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem;">
                         <div class="form-field">
                             <label for="totalEngineers">Toplam Mühendis</label>
-                            <input type="text" id="totalEngineers" value="18" placeholder="Örn: 18">
+                            <input type="text" id="totalEngineers" value="90" placeholder="Örn: 90">
                             <span class="field-hint">İşyeri anketi S.1</span>
                         </div>
                         <div class="form-field">
                             <label for="eeeEngineers">EEE Mühendisi</label>
-                            <input type="text" id="eeeEngineers" value="4" placeholder="Örn: 4">
+                            <input type="text" id="eeeEngineers" value="10" placeholder="Örn: 10">
                             <span class="field-hint">Bölüm mezunu</span>
                         </div>
                         <div class="form-field">
                             <label for="totalEmployees">Toplam Çalışan</label>
-                            <input type="text" id="totalEmployees" value="45" placeholder="Örn: 45">
+                            <input type="text" id="totalEmployees" value="180" placeholder="Örn: 180">
                             <span class="field-hint">Tüm personel</span>
                         </div>
                     </div>
@@ -1126,115 +1126,133 @@ HTML_TEMPLATE = """
         let selectedPdfFile = null;
         let useDefaultPdf = true;
 
-        // Automatically configure initial UI state for default JSON
-        window.addEventListener('DOMContentLoaded', () => {
-            setJsonLoaded('entries.json (Varsayılan)', '39.8 KB', 30);
-        });
+        const STORAGE_KEY = 'staj_defteri_form_cache_v2';
 
-        // Helper Defaults
+        const formInputElements = [
+            studentName, studentTc, studentId, studentYear, studentDept, courseCode,
+            birthPlace, birthDate, fatherName, motherName, studentEmail, studentPhone,
+            academicYear, studentSignDate, residenceAddress, companyName, companyAddress,
+            internshipDept, companyField, productionServiceArea, riskRange, companyWeb,
+            companyPhone, companyFax, companyEmail, employerName, employerTitle,
+            employerEmail, departmentEmployees, acceptanceDate, evaluationDate,
+            durationWorkdays, startDateInput, totalEngineers, eeeEngineers, totalEmployees,
+            eeeNeedExplanation, surveyExplanation
+        ];
+
+        // Helper Defaults (Configured with real student and corporate data)
         const DEFAULTS = {
-            name: "Devran Sever",
-            tc_no: "12345678901",
-            student_id: "23091400016",
-            year: "3rd",
-            department: "Electrical and Electronics Engineering",
-            course_code: "EEE 299",
-            birth_place: "Istanbul",
-            birth_date: "15/04/2003",
-            father_name: "Ahmet",
-            mother_name: "Fatma",
-            student_email: "devransever@ogr.halic.edu.tr",
-            student_phone: "+90 555 123 4567",
-            academic_year: "2025 - 2026",
-            student_sign_date: "25/07/2026",
-            residence_address: "Ornek Mah. Ataturk Cad. No:14 D:5 Kadikoy / Istanbul",
+            studentName: "Devran Sever",
+            studentTc: "14642408896",
+            studentId: "23091400016",
+            studentYear: "3rd",
+            studentDept: "Electrical and Electronics Engineering",
+            courseCode: "EEE 299",
+            birthPlace: "Istanbul",
+            birthDate: "08/02/2005",
+            fatherName: "Murat",
+            motherName: "Emine",
+            studentEmail: "23091400016@ogr.halic.edu.tr",
+            studentPhone: "+90 5525235067",
+            academicYear: "2025 - 2026",
+            studentSignDate: "25/07/2026",
+            residenceAddress: "Gazi Mah. Ismet Pasa Cad. 1416/1 Sok. no.:11 Daire:2 Sultangazi/Istanbul",
 
-            company_name: "Teknoloji ve Yazilim Cozumleri A.S.",
-            company_address: "Buyukdere Cad. No:122 Levent / Besiktas / Istanbul",
-            internship_department: "IT Operations & Software Engineering",
-            company_field: "Information Technology & Software Development",
-            production_service_area: "Yazilim & Bilisim Cozumleri",
-            risk_range: "Az Tehlikeli (Low Risk)",
-            company_web: "www.teknolojias.com.tr",
-            company_phone: "(0212) 555 0100",
-            company_fax: "(0212) 555 0101",
-            company_email: "staj@teknoloji.com.tr",
+            companyName: "Akdeniz Pe-Tur Turizm Seyahat Acentasi ve Ticaret A.S.",
+            companyAddress: "Cobancesme Mah. Sanayi Cad. No:44 Nish Istanbul C Blok Kat:17 D: 197-200 Yenibosna, Bahcelievler, Istanbul, Turkiye",
+            internshipDept: "IT Operations & Software Engineering",
+            companyField: "Information Technology & Software Development",
+            productionServiceArea: "Turizm, Biletleme ve Bilisim Teknolojileri",
+            riskRange: "Az Tehlikeli (Low Risk)",
+            companyWeb: "https://biletbank.com",
+            companyPhone: "+90 850 222 08 30",
+            companyFax: "(0212) 555 0101",
+            companyEmail: "info@petour.com",
 
-            employer_name: "Mehmet Yilmaz",
-            employer_title: "Engineering Manager",
-            employer_email: "mehmet.yilmaz@teknoloji.com.tr",
-            department_employees: "12 Employees",
-            acceptance_date: "28/07/2026",
-            evaluation_date: "18/09/2026",
+            employerName: "Mehmet Yilmaz",
+            employerTitle: "Engineering Manager",
+            employerEmail: "mehmet.yilmaz@teknoloji.com.tr",
+            departmentEmployees: "12 Employees",
+            acceptanceDate: "28/07/2026",
+            evaluationDate: "18/09/2026",
 
-            duration_workdays: "30 Workdays",
-            start_date: "2026-08-10",
-            total_engineers: "18",
-            eee_engineers: "4",
-            total_employees: "45",
-            eee_need_explanation: "Hardware-software integration, system testing and network infrastructure projects.",
-            survey_explanation: "N/A - The enterprise provided strong technical mentorship, well-equipped hardware labs, and advanced database infrastructure."
+            durationWorkdays: "30 Workdays",
+            startDateInput: "2026-08-10",
+            totalEngineers: "90",
+            eeeEngineers: "10",
+            totalEmployees: "180",
+            eeeNeedExplanation: "Hardware-software integration, system testing and network infrastructure projects.",
+            surveyExplanation: "N/A - The enterprise provided strong technical mentorship, well-equipped hardware labs, and advanced database infrastructure."
         };
 
+        // Save all form inputs to browser localStorage
+        function saveFormData() {
+            try {
+                const data = {};
+                formInputElements.forEach(el => {
+                    if (el && el.id) {
+                        data[el.id] = el.value;
+                    }
+                });
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            } catch (err) {
+                console.warn('LocalStorage save error:', err);
+            }
+        }
+
+        // Restore form inputs from browser localStorage
+        function loadSavedFormData() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    let restoredCount = 0;
+                    formInputElements.forEach(el => {
+                        if (el && el.id && data[el.id] !== undefined && data[el.id] !== null) {
+                            el.value = data[el.id];
+                            restoredCount++;
+                        }
+                    });
+                    if (restoredCount > 0) {
+                        log('[✓] Yazdığınız form bilgileri tarayıcı hafızasından yüklendi (Kalıcı kayıt aktif).', 'success');
+                        return true;
+                    }
+                }
+            } catch (err) {
+                console.warn('LocalStorage load error:', err);
+            }
+            return false;
+        }
+
+        // Bind immediate auto-save listeners to all form fields
+        formInputElements.forEach(el => {
+            if (el) {
+                el.addEventListener('input', saveFormData);
+                el.addEventListener('change', saveFormData);
+            }
+        });
+
+        // Automatically configure initial UI state and load saved data
+        window.addEventListener('DOMContentLoaded', () => {
+            setJsonLoaded('entries.json (Varsayılan)', '39.8 KB', 30);
+            loadSavedFormData();
+        });
+
         resetDefaultsBtn.addEventListener('click', () => {
-            studentName.value = DEFAULTS.name;
-            studentTc.value = DEFAULTS.tc_no;
-            studentId.value = DEFAULTS.student_id;
-            studentYear.value = DEFAULTS.year;
-            studentDept.value = DEFAULTS.department;
-            courseCode.value = DEFAULTS.course_code;
-            birthPlace.value = DEFAULTS.birth_place;
-            birthDate.value = DEFAULTS.birth_date;
-            fatherName.value = DEFAULTS.father_name;
-            motherName.value = DEFAULTS.mother_name;
-            studentEmail.value = DEFAULTS.student_email;
-            studentPhone.value = DEFAULTS.student_phone;
-            academicYear.value = DEFAULTS.academic_year;
-            studentSignDate.value = DEFAULTS.student_sign_date;
-            residenceAddress.value = DEFAULTS.residence_address;
-
-            companyName.value = DEFAULTS.company_name;
-            companyAddress.value = DEFAULTS.company_address;
-            internshipDept.value = DEFAULTS.internship_department;
-            companyField.value = DEFAULTS.company_field;
-            productionServiceArea.value = DEFAULTS.production_service_area;
-            riskRange.value = DEFAULTS.risk_range;
-            companyWeb.value = DEFAULTS.company_web;
-            companyPhone.value = DEFAULTS.company_phone;
-            companyFax.value = DEFAULTS.company_fax;
-            companyEmail.value = DEFAULTS.company_email;
-
-            employerName.value = DEFAULTS.employer_name;
-            employerTitle.value = DEFAULTS.employer_title;
-            employerEmail.value = DEFAULTS.employer_email;
-            departmentEmployees.value = DEFAULTS.department_employees;
-            acceptanceDate.value = DEFAULTS.acceptance_date;
-            evaluationDate.value = DEFAULTS.evaluation_date;
-
-            durationWorkdays.value = DEFAULTS.duration_workdays;
-            startDateInput.value = DEFAULTS.start_date;
-            totalEngineers.value = DEFAULTS.total_engineers;
-            eeeEngineers.value = DEFAULTS.eee_engineers;
-            totalEmployees.value = DEFAULTS.total_employees;
-            eeeNeedExplanation.value = DEFAULTS.eee_need_explanation;
-            surveyExplanation.value = DEFAULTS.survey_explanation;
-
-            log('[i] Form alanları varsayılan öğrenci ve staj bilgileri ile dolduruldu.', 'info');
+            formInputElements.forEach(el => {
+                if (el && el.id && DEFAULTS[el.id] !== undefined) {
+                    el.value = DEFAULTS[el.id];
+                }
+            });
+            saveFormData();
+            log('[i] Form alanları güncel öğrenci ve şirket bilgileri ile dolduruldu ve hafızaya kaydedildi.', 'info');
         });
 
         clearFieldsBtn.addEventListener('click', () => {
-            const allInputs = [
-                studentName, studentTc, studentId, studentYear, studentDept, courseCode,
-                birthPlace, birthDate, fatherName, motherName, studentEmail, studentPhone,
-                academicYear, studentSignDate, residenceAddress, companyName, companyAddress,
-                internshipDept, companyField, productionServiceArea, riskRange, companyWeb,
-                companyPhone, companyFax, companyEmail, employerName, employerTitle,
-                employerEmail, departmentEmployees, acceptanceDate, evaluationDate,
-                durationWorkdays, totalEngineers, eeeEngineers, totalEmployees,
-                eeeNeedExplanation, surveyExplanation
-            ];
-            allInputs.forEach(el => { if (el) el.value = ''; });
-            log('[i] Tüm form alanları temizlendi.', 'info');
+            formInputElements.forEach(el => { if (el) el.value = ''; });
+            try {
+                localStorage.removeItem(STORAGE_KEY);
+            } catch (e) {}
+            log('[i] Tüm form alanları temizlendi ve tarayıcı hafızası sıfırlandı.', 'info');
         });
 
         // Terminal Log Helper
@@ -1415,6 +1433,7 @@ HTML_TEMPLATE = """
 
             processBtn.disabled = true;
             processBtn.innerHTML = '<span>⏳</span> İnceleniyor ve Dolduruluyor...';
+            saveFormData();
             terminalStatus.textContent = 'İşleniyor...';
             terminalStatus.style.color = '#f59e0b';
 

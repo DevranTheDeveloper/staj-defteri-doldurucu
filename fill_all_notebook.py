@@ -56,6 +56,36 @@ def sanitize_text(text: str) -> str:
     return text
 
 
+def safe_insert_textbox(
+    page: fitz.Page,
+    rect: fitz.Rect,
+    text: str,
+    fontsize: float = 8.5,
+    min_fontsize: float = 5.0,
+    fontname: str = "tiro",
+    align: int = fitz.TEXT_ALIGN_LEFT
+) -> float:
+    """Inserts text into a bounding box, automatically reducing font size if it overflows. Never drops text."""
+    if text is None:
+        return 0.0
+    text_str = str(text).strip()
+    if not text_str:
+        return 0.0
+    if rect.height < 35 and "\n" in text_str:
+        text_clean = " ".join(text_str.split())
+    else:
+        text_clean = text_str
+
+    current_fs = fontsize
+    while current_fs >= min_fontsize:
+        rc = page.insert_textbox(rect, text_clean, fontsize=current_fs, fontname=fontname, align=align)
+        if rc >= 0:
+            return rc
+        current_fs -= 0.5
+
+    return page.insert_textbox(rect, text_clean, fontsize=min_fontsize, fontname=fontname, align=align)
+
+
 def run():
     input_pdf = "EEE-Internship Notebook.pdf"
     output_pdf = "EEE-Internship Notebook_Complete.pdf"
@@ -84,7 +114,8 @@ def run():
     # =========================================================================
     p1 = doc[0]
     # Internship Course ID box below Student ID
-    p1.insert_textbox(
+    safe_insert_textbox(
+        p1,
         fitz.Rect(195, 631, 440, 656),
         "EEE 299",
         fontsize=11,
@@ -104,49 +135,49 @@ def run():
     p10.insert_text(fitz.Point(135, 244), "30", fontsize=9.0, fontname="tibo")
 
     # Table 1: Student Information
-    p10.insert_textbox(fitz.Rect(178, 287, 323, 301.44), "12345678901", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(425, 287, 570, 301.44), "2025 - 2026", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(178, 301, 323, 314.88), "Devran", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(425, 301, 570, 314.88), "23091400016", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(178, 314, 323, 328.32), "Sever", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(425, 314, 570, 328.32), "Istanbul", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(178, 328, 323, 341.76), "Ahmet", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(425, 328, 570, 341.76), "15/04/2003", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(178, 341, 323, 355.44), "Fatma", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(425, 341, 570, 355.44), "devransever@ogr.halic.edu.tr", fontsize=8.0, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(178, 355, 323, 368.88), "T.C.", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(425, 355, 570, 368.88), "+90 555 123 4567", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(178, 369, 570, 387.12), "Ornek Mah. Ataturk Cad. No:14 D:5 Kadikoy / Istanbul", fontsize=8.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(178, 287, 323, 301.44), "14642408896", fontsize=8.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(425, 287, 570, 301.44), "2025 - 2026", fontsize=8.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(178, 301, 323, 314.88), "Devran", fontsize=8.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(425, 301, 570, 314.88), "23091400016", fontsize=8.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(178, 314, 323, 328.32), "Sever", fontsize=8.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(425, 314, 570, 328.32), "Istanbul", fontsize=8.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(178, 328, 323, 341.76), "Murat", fontsize=8.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(425, 328, 570, 341.76), "08/02/2005", fontsize=8.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(178, 341, 323, 355.44), "Emine", fontsize=8.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(425, 341, 570, 355.44), "23091400016@ogr.halic.edu.tr", fontsize=8.0, min_fontsize=5.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(178, 355, 323, 368.88), "T.C.", fontsize=8.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(425, 355, 570, 368.88), "+90 5525235067", fontsize=8.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(178, 368.0, 570, 388.0), "Gazi Mah. Ismet Pasa Cad. 1416/1 Sok. no.:11 Daire:2 Sultangazi/Istanbul", fontsize=8.0, min_fontsize=5.0, fontname="tiro")
 
     # Table 2: Institution / Company Information
-    p10.insert_textbox(fitz.Rect(178, 404, 573, 418.08), "Teknoloji ve Yazilim Cozumleri A.S.", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(178, 418, 573, 434.88), "Buyukdere Cad. No:122 Levent / Besiktas / Istanbul", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(178, 434, 321, 448.32), "Yazilim & Bilisim", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(424, 434, 573, 448.32), "Az Tehlikeli (Low Risk)", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(178, 448, 321, 461.76), "(0212) 555 0100", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(424, 448, 573, 461.76), "(0212) 555 0101", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(178, 461, 321, 475.20), "staj@teknoloji.com.tr", fontsize=8.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(424, 461, 573, 475.20), "www.teknolojias.com.tr", fontsize=8.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(178, 403.0, 573, 418.0), "Akdeniz Pe-Tur Turizm Seyahat Acentasi ve Ticaret A.S.", fontsize=8.5, min_fontsize=5.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(178, 417.0, 573, 436.5), "Cobancesme Mah. Sanayi Cad. No:44 Nish Istanbul C Blok Kat:17 D: 197-200 Yenibosna, Bahcelievler, Istanbul, Turkiye", fontsize=8.0, min_fontsize=5.0, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(178, 434.0, 321, 449.0), "Turizm, Biletleme ve Bilisim Teknolojileri", fontsize=8.5, min_fontsize=5.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(424, 434.0, 573, 449.0), "Az Tehlikeli (Low Risk)", fontsize=8.5, min_fontsize=5.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(178, 448.0, 321, 462.0), "+90 850 222 08 30", fontsize=8.5, min_fontsize=5.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(424, 448.0, 573, 462.0), "(0212) 555 0101", fontsize=8.5, min_fontsize=5.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(178, 461.0, 321, 476.0), "info@petour.com", fontsize=8.5, min_fontsize=5.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(424, 461.0, 573, 476.0), "https://biletbank.com", fontsize=8.5, min_fontsize=5.5, fontname="tiro")
 
     # Starting date, End date, Duration
     p10.draw_rect(fitz.Rect(175, 477, 272, 508), color=None, fill=(1, 1, 1))
-    p10.insert_textbox(fitz.Rect(175, 477, 272, 508), "10/08/2026", fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+    safe_insert_textbox(p10, fitz.Rect(175, 477, 272, 508), "10/08/2026", fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
 
     p10.draw_rect(fitz.Rect(346, 477, 444, 508), color=None, fill=(1, 1, 1))
-    p10.insert_textbox(fitz.Rect(346, 477, 444, 508), "18/09/2026", fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+    safe_insert_textbox(p10, fitz.Rect(346, 477, 444, 508), "18/09/2026", fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
 
     p10.draw_rect(fitz.Rect(518, 477, 574, 508), color=None, fill=(1, 1, 1))
-    p10.insert_textbox(fitz.Rect(518, 477, 574, 508), "30 Workdays", fontsize=8.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+    safe_insert_textbox(p10, fitz.Rect(518, 477, 574, 508), "30 Workdays", fontsize=8.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
 
     # Table 3: Employer Information (Signature/stamp left blank for manual ink)
-    p10.insert_textbox(fitz.Rect(179, 545, 325, 560), "Mehmet Yilmaz", fontsize=8.0, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(179, 558, 325, 573), "Engineering Manager", fontsize=8.0, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(179, 571, 325, 586), "mehmet.yilmaz@teknoloji.com.tr", fontsize=7.5, fontname="tiro")
-    p10.insert_textbox(fitz.Rect(179, 585, 325, 600), "18/09/2026", fontsize=8.0, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(179, 545, 325, 560), "Mehmet Yilmaz", fontsize=8.0, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(179, 558, 325, 573), "Engineering Manager", fontsize=8.0, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(179, 571, 325, 586), "mehmet.yilmaz@teknoloji.com.tr", fontsize=7.5, fontname="tiro")
+    safe_insert_textbox(p10, fitz.Rect(179, 585, 325, 600), "18/09/2026", fontsize=8.0, fontname="tiro")
 
     # Student Signature Date
     p10.draw_rect(fitz.Rect(98, 686, 180, 704), color=None, fill=(1, 1, 1))
-    p10.insert_textbox(fitz.Rect(98, 686, 180, 704), "25/07/2026", fontsize=8.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+    safe_insert_textbox(p10, fitz.Rect(98, 686, 180, 704), "25/07/2026", fontsize=8.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
 
     # =========================================================================
     # 3. INTERNSHIP ACCEPTANCE FORM (Page 11 / Index 10)
