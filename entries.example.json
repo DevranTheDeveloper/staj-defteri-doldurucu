@@ -1,0 +1,23 @@
+[
+    {
+        "day": 1,
+        "department": "IT Operations & Maintenance Workshop",
+        "date": "10/08/2026",
+        "topic": "Orientation, Workshop Safety, and Inventorying Decommissioned Systems",
+        "content": "Today was my first day as an intern in the department. In the morning, I met with my internship mentor and the IT operations supervisor. We reviewed laboratory safety procedures, electrostatic discharge (ESD) safety protocols, and emergency exits before touring the facilities. My supervisor then introduced my primary assignment for the first week: overhauling and repurposing a fleet of decommissioned office computer towers that had been set aside in the enterprise storage depot so they could be redeployed as auxiliary workstations and database test machines."
+    },
+    {
+        "day": 2,
+        "department": "IT Operations & Maintenance Workshop",
+        "date": "11/08/2026",
+        "topic": "Hardware Maintenance: RAM Upgrades, Drive Testing, and Thermal Management",
+        "content": "I began the day by focusing on hardware component replacements and thermal maintenance for the desktop towers inspected yesterday. To make these computers responsive enough for the company's internal engineering workloads, my goal was to upgrade memory capacity and replace failing mechanical hard drives. In the morning, I searched through the department's spare hardware stock to find compatible DDR3 and DDR4 memory modules, SATA cables, and reliable storage drives."
+    },
+    {
+        "day": 3,
+        "department": "Software & Database Engineering",
+        "date": "12/08/2026",
+        "topic": "Operating System Deployment, MBR/GPT Configurations, and Diagnostics",
+        "content": "With the internal hardware components upgraded and verified in BIOS, my objective today was to install clean operating systems across all refurbished workstations. I used custom bootable media configured for legacy BIOS and UEFI compatibility, ensuring stable partition tables and validating system reliability through automated diagnostic sweeps."
+    }
+]

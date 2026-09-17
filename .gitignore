@@ -1,0 +1,18 @@
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary outputs & test artifacts
+Filled_Internship_Notebook_Final.pdf
+Doldurulmus_Staj_Defteri.pdf
+*Filled*.pdf
+*.png
+
+# macOS
+.DS_Store
