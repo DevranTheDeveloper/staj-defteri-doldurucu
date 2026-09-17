@@ -337,16 +337,44 @@ HTML_TEMPLATE = """
             gap: 1.25rem;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .input-grid {
                 grid-template-columns: 1fr;
             }
+        }
+
+        .field-group-card {
+            background: rgba(19, 27, 46, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 0.85rem;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .field-group-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
         .field-col {
             display: flex;
             flex-direction: column;
             gap: 0.85rem;
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-row-2 {
+                grid-template-columns: 1fr;
+            }
         }
 
         .form-field {
@@ -361,7 +389,8 @@ HTML_TEMPLATE = """
             color: #cbd5e1;
         }
 
-        .form-field input {
+        .form-field input,
+        .form-field textarea {
             background: var(--surface-card);
             border: 1px solid var(--border);
             color: var(--text);
@@ -373,7 +402,14 @@ HTML_TEMPLATE = """
             transition: all 0.2s;
         }
 
-        .form-field input:focus {
+        .form-field textarea {
+            resize: vertical;
+            min-height: 52px;
+            line-height: 1.35;
+        }
+
+        .form-field input:focus,
+        .form-field textarea:focus {
             border-color: var(--primary);
             box-shadow: 0 0 10px var(--primary-glow);
             background: #19253d;
@@ -693,75 +729,253 @@ HTML_TEMPLATE = """
             </div>
 
             <div class="input-grid">
-                <!-- Column 1: Student Information -->
-                <div class="field-col">
+                <!-- Card 1: Student Information -->
+                <div class="field-group-card">
                     <div class="form-group-title">
-                        <span>🎓</span> Öğrenci Bilgileri
+                        <span>🎓</span> Öğrenci Kişisel & Akademik Bilgileri
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label for="studentName">Öğrenci Adı Soyadı</label>
+                            <input type="text" id="studentName" value="Devran Sever" placeholder="Örn: Devran Sever">
+                            <span class="field-hint">Kapak, Kabul, Devam, Komisyon</span>
+                        </div>
+                        <div class="form-field">
+                            <label for="studentTc">T.C. Kimlik No</label>
+                            <input type="text" id="studentTc" value="12345678901" maxlength="11" placeholder="11 haneli T.C. Kimlik No">
+                            <span class="field-hint">Zorunlu staj formu kimlik tablosu</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label for="studentId">Öğrenci Numarası</label>
+                            <input type="text" id="studentId" value="23091400016" placeholder="Örn: 23091400016">
+                        </div>
+                        <div class="form-field">
+                            <label for="studentYear">Sınıf / Yıl</label>
+                            <input type="text" id="studentYear" value="3rd" placeholder="Örn: 3rd veya 3">
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label for="studentDept">Üniversite Bölümü</label>
+                            <input type="text" id="studentDept" value="Electrical and Electronics Engineering" placeholder="Bölüm Adı">
+                        </div>
+                        <div class="form-field">
+                            <label for="courseCode">Staj Dersi Kodu</label>
+                            <input type="text" id="courseCode" value="EEE 299" placeholder="Örn: EEE 299">
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label for="birthPlace">Doğum Yeri</label>
+                            <input type="text" id="birthPlace" value="Istanbul" placeholder="Örn: Istanbul">
+                        </div>
+                        <div class="form-field">
+                            <label for="birthDate">Doğum Tarihi</label>
+                            <input type="text" id="birthDate" value="15/04/2003" placeholder="GG/AA/YYYY">
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label for="fatherName">Baba Adı</label>
+                            <input type="text" id="fatherName" value="Ahmet" placeholder="Baba Adı">
+                        </div>
+                        <div class="form-field">
+                            <label for="motherName">Anne Adı</label>
+                            <input type="text" id="motherName" value="Fatma" placeholder="Anne Adı">
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label for="studentEmail">Öğrenci E-posta</label>
+                            <input type="email" id="studentEmail" value="devransever@ogr.halic.edu.tr" placeholder="E-posta">
+                        </div>
+                        <div class="form-field">
+                            <label for="studentPhone">Öğrenci Telefon</label>
+                            <input type="tel" id="studentPhone" value="+90 555 123 4567" placeholder="Telefon">
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label for="academicYear">Öğretim Yılı</label>
+                            <input type="text" id="academicYear" value="2025 - 2026" placeholder="Örn: 2025 - 2026">
+                        </div>
+                        <div class="form-field">
+                            <label for="studentSignDate">Başvuru / Beyan Tarihi</label>
+                            <input type="text" id="studentSignDate" value="25/07/2026" placeholder="GG/AA/YYYY">
+                        </div>
                     </div>
 
                     <div class="form-field">
-                        <label for="studentName">Öğrenci Adı Soyadı</label>
-                        <input type="text" id="studentName" value="Devran Sever" placeholder="Örn: Devran Sever">
-                        <span class="field-hint">Kapak, Kabul, Devam, Komisyon sayfalarına yazılır</span>
-                    </div>
-
-                    <div class="form-field">
-                        <label for="studentId">Öğrenci Numarası</label>
-                        <input type="text" id="studentId" value="23091400016" placeholder="Örn: 23091400016">
-                        <span class="field-hint">Kapak, Değerlendirme ve Komisyon formlarına yazılır</span>
-                    </div>
-
-                    <div class="form-field">
-                        <label for="studentYear">Sınıf / Yıl</label>
-                        <input type="text" id="studentYear" value="3rd" placeholder="Örn: 3rd veya 3">
-                        <span class="field-hint">Kabul formu ve komisyon sayfalarına yazılır</span>
-                    </div>
-
-                    <div class="form-field">
-                        <label for="studentDept">Üniversite Bölümü</label>
-                        <input type="text" id="studentDept" value="Electrical and Electronics Engineering" placeholder="Örn: Electrical and Electronics Engineering">
-                    </div>
-
-                    <div class="form-field">
-                        <label for="courseCode">Staj Dersi Kodu</label>
-                        <input type="text" id="courseCode" value="EEE 299" placeholder="Örn: EEE 299">
-                        <span class="field-hint">Kapak sayfası Course ID alanına basılır</span>
+                        <label for="residenceAddress">İkametgah / Ev Adresi</label>
+                        <input type="text" id="residenceAddress" value="Ornek Mah. Ataturk Cad. No:14 D:5 Kadikoy / Istanbul" placeholder="Açık ikametgah adresi">
+                        <span class="field-hint">Zorunlu staj formu beyan adresi satırı</span>
                     </div>
                 </div>
 
-                <!-- Column 2: Company & Internship Details -->
-                <div class="field-col">
+                <!-- Card 2: Company Details -->
+                <div class="field-group-card">
                     <div class="form-group-title">
-                        <span>🏢</span> Şirket ve Staj Detayları
+                        <span>🏢</span> Kurum / Şirket Bilgileri
                     </div>
 
                     <div class="form-field">
-                        <label for="companyName">Kurum / Şirket Adı</label>
-                        <input type="text" id="companyName" value="IT Operations & Software Development" placeholder="Örn: ASELSAN / HAVELSAN / Ar-Ge">
-                        <span class="field-hint">Değerlendirme ve yer inceleme formlarına yazılır</span>
+                        <label for="companyName">Kurum / Şirket Tam Adı</label>
+                        <input type="text" id="companyName" value="Teknoloji ve Yazilim Cozumleri A.S." placeholder="Kurumun resmi unvanı">
+                        <span class="field-hint">Kabul, devam çizelgesi ve değerlendirme sayfaları</span>
                     </div>
 
                     <div class="form-field">
-                        <label for="internshipDept">Staj Yapılan Departman</label>
-                        <input type="text" id="internshipDept" value="IT Operations & Software Engineering" placeholder="Örn: IT Operations & Software Engineering">
-                        <span class="field-hint">Devam çizelgesi ve kabul formuna yazılır</span>
+                        <label for="companyAddress">Kurum Açık Adresi</label>
+                        <input type="text" id="companyAddress" value="Buyukdere Cad. No:122 Levent / Besiktas / Istanbul" placeholder="Şirket resmi açık adresi">
+                        <span class="field-hint">Zorunlu staj formu ve staj yeri değerlendirme formu</span>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label for="internshipDept">Staj Yapılan Departman</label>
+                            <input type="text" id="internshipDept" value="IT Operations & Software Engineering" placeholder="Örn: IT Operations">
+                        </div>
+                        <div class="form-field">
+                            <label for="companyField">Faaliyet Alanı / Sektör</label>
+                            <input type="text" id="companyField" value="Information Technology & Software Development" placeholder="Örn: Information Technology">
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label for="productionServiceArea">Üretim / Hizmet Alanı</label>
+                            <input type="text" id="productionServiceArea" value="Yazilim & Bilisim Cozumleri" placeholder="Örn: Yazilim & Bilisim">
+                        </div>
+                        <div class="form-field">
+                            <label for="riskRange">Tehlike Sınıfı</label>
+                            <input type="text" id="riskRange" value="Az Tehlikeli (Low Risk)" placeholder="Örn: Az Tehlikeli">
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label for="companyWeb">Web Sitesi</label>
+                            <input type="text" id="companyWeb" value="www.teknolojias.com.tr" placeholder="www.sirket.com">
+                        </div>
+                        <div class="form-field">
+                            <label for="companyPhone">Şirket Telefonu</label>
+                            <input type="tel" id="companyPhone" value="(0212) 555 0100" placeholder="(0212) ...">
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label for="companyFax">Faks Numarası</label>
+                            <input type="text" id="companyFax" value="(0212) 555 0101" placeholder="(0212) ...">
+                        </div>
+                        <div class="form-field">
+                            <label for="companyEmail">Şirket Kurumsal E-posta</label>
+                            <input type="email" id="companyEmail" value="staj@teknoloji.com.tr" placeholder="staj@sirket.com">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Employer & Authorized Personnel -->
+                <div class="field-group-card">
+                    <div class="form-group-title">
+                        <span>👔</span> Yetkili / Amir Bilgileri & Onaylar
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label for="employerName">Yetkili Adı Soyadı</label>
+                            <input type="text" id="employerName" value="Mehmet Yilmaz" placeholder="Yetkili Mühendis / Yönetici">
+                            <span class="field-hint">Kabul formu ve işyeri değerlendirme formu yetkilisi</span>
+                        </div>
+                        <div class="form-field">
+                            <label for="employerTitle">Yetkili Görev / Unvanı</label>
+                            <input type="text" id="employerTitle" value="Engineering Manager" placeholder="Örn: Engineering Manager">
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label for="employerEmail">Yetkili E-posta Adresi</label>
+                            <input type="email" id="employerEmail" value="mehmet.yilmaz@teknoloji.com.tr" placeholder="yetkili@sirket.com">
+                        </div>
+                        <div class="form-field">
+                            <label for="departmentEmployees">Departmandaki Personel Sayısı</label>
+                            <input type="text" id="departmentEmployees" value="12 Employees" placeholder="Örn: 12 Employees">
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label for="acceptanceDate">Kabul Formu Onay Tarihi</label>
+                            <input type="text" id="acceptanceDate" value="28/07/2026" placeholder="GG/AA/YYYY">
+                            <span class="field-hint">Sayfa 11 Kabul Formu üst sağ tarihi</span>
+                        </div>
+                        <div class="form-field">
+                            <label for="evaluationDate">Değerlendirme Formu Tarihi</label>
+                            <input type="text" id="evaluationDate" value="18/09/2026" placeholder="GG/AA/YYYY">
+                            <span class="field-hint">Sayfa 13 Staj bitiş onay tarihi</span>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.15); border-radius: 0.6rem; padding: 0.75rem; font-size: 0.775rem; color: #94a3b8; line-height: 1.4;">
+                        ℹ️ <strong>İmza & Kaşe Alanları:</strong> Resmi imza, mühür ve kaşe alanları üniversite yönergesi gereği ıslak imza için otomatik olarak boş bırakılır.
+                    </div>
+                </div>
+
+                <!-- Card 4: Internship Metrics, Engineer Statistics & Survey -->
+                <div class="field-group-card">
+                    <div class="form-group-title">
+                        <span>📊</span> Staj Takvimi, Mühendis İstatistikleri & Anket
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label for="durationWorkdays">Staj Süresi</label>
+                            <input type="text" id="durationWorkdays" value="30 Workdays" placeholder="Örn: 30 Workdays">
+                            <span class="field-hint">Kabul ve devam formları süresi</span>
+                        </div>
+                        <div class="form-field">
+                            <label for="startDateInput">Staj Başlangıç Tarihi (Pazartesi)</label>
+                            <input type="date" id="startDateInput" value="2026-08-10">
+                            <span class="field-hint">30 iş günü (Pzt-Cum) hesaplanır</span>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem;">
+                        <div class="form-field">
+                            <label for="totalEngineers">Toplam Mühendis</label>
+                            <input type="text" id="totalEngineers" value="18" placeholder="Örn: 18">
+                            <span class="field-hint">İşyeri anketi S.1</span>
+                        </div>
+                        <div class="form-field">
+                            <label for="eeeEngineers">EEE Mühendisi</label>
+                            <input type="text" id="eeeEngineers" value="4" placeholder="Örn: 4">
+                            <span class="field-hint">Bölüm mezunu</span>
+                        </div>
+                        <div class="form-field">
+                            <label for="totalEmployees">Toplam Çalışan</label>
+                            <input type="text" id="totalEmployees" value="45" placeholder="Örn: 45">
+                            <span class="field-hint">Tüm personel</span>
+                        </div>
                     </div>
 
                     <div class="form-field">
-                        <label for="companyField">Faaliyet Alanı / Sektör</label>
-                        <input type="text" id="companyField" value="Information Technology & Software Development" placeholder="Örn: Information Technology">
-                        <span class="field-hint">Staj yeri değerlendirme formu sektör bilgisi</span>
+                        <label for="eeeNeedExplanation">EEE Mühendisi İhtiyacı Gerekçesi (Sayfa 14 - Soru 2)</label>
+                        <textarea id="eeeNeedExplanation" rows="2" placeholder="Gerekçe açıklaması">Hardware-software integration, system testing and network infrastructure projects.</textarea>
                     </div>
 
                     <div class="form-field">
-                        <label for="durationWorkdays">Staj Süresi</label>
-                        <input type="text" id="durationWorkdays" value="30 Workdays" placeholder="Örn: 30 Workdays">
-                    </div>
-
-                    <div class="form-field">
-                        <label for="startDateInput">Staj Başlangıç Tarihi (Pazartesi)</label>
-                        <input type="date" id="startDateInput" value="2026-08-10">
-                        <span class="field-hint">30 iş günü (Pzt-Cum) bu tarihten itibaren otomatik hesaplanır</span>
+                        <label for="surveyExplanation">İşyeri Değerlendirme & Ar-Ge Açıklaması (Sayfa 15 - Soru 4)</label>
+                        <textarea id="surveyExplanation" rows="2" placeholder="Ar-Ge ve altyapı açıklaması">N/A - The enterprise provided strong technical mentorship, well-equipped hardware labs, and advanced database infrastructure.</textarea>
                     </div>
                 </div>
             </div>
@@ -848,17 +1062,52 @@ HTML_TEMPLATE = """
         const pdfPagesPill = document.getElementById('pdfPagesPill');
         const pdfSub = document.getElementById('pdfSub');
 
-        // Form Fields
+        // Form Fields - Student
         const studentName = document.getElementById('studentName');
+        const studentTc = document.getElementById('studentTc');
         const studentId = document.getElementById('studentId');
         const studentYear = document.getElementById('studentYear');
         const studentDept = document.getElementById('studentDept');
         const courseCode = document.getElementById('courseCode');
+        const birthPlace = document.getElementById('birthPlace');
+        const birthDate = document.getElementById('birthDate');
+        const fatherName = document.getElementById('fatherName');
+        const motherName = document.getElementById('motherName');
+        const studentEmail = document.getElementById('studentEmail');
+        const studentPhone = document.getElementById('studentPhone');
+        const academicYear = document.getElementById('academicYear');
+        const studentSignDate = document.getElementById('studentSignDate');
+        const residenceAddress = document.getElementById('residenceAddress');
+
+        // Form Fields - Company
         const companyName = document.getElementById('companyName');
+        const companyAddress = document.getElementById('companyAddress');
         const internshipDept = document.getElementById('internshipDept');
         const companyField = document.getElementById('companyField');
+        const productionServiceArea = document.getElementById('productionServiceArea');
+        const riskRange = document.getElementById('riskRange');
+        const companyWeb = document.getElementById('companyWeb');
+        const companyPhone = document.getElementById('companyPhone');
+        const companyFax = document.getElementById('companyFax');
+        const companyEmail = document.getElementById('companyEmail');
+
+        // Form Fields - Employer
+        const employerName = document.getElementById('employerName');
+        const employerTitle = document.getElementById('employerTitle');
+        const employerEmail = document.getElementById('employerEmail');
+        const departmentEmployees = document.getElementById('departmentEmployees');
+        const acceptanceDate = document.getElementById('acceptanceDate');
+        const evaluationDate = document.getElementById('evaluationDate');
+
+        // Form Fields - Metrics & Survey
         const durationWorkdays = document.getElementById('durationWorkdays');
         const startDateInput = document.getElementById('startDateInput');
+        const totalEngineers = document.getElementById('totalEngineers');
+        const eeeEngineers = document.getElementById('eeeEngineers');
+        const totalEmployees = document.getElementById('totalEmployees');
+        const eeeNeedExplanation = document.getElementById('eeeNeedExplanation');
+        const surveyExplanation = document.getElementById('surveyExplanation');
+
         const resetDefaultsBtn = document.getElementById('resetDefaultsBtn');
         const clearFieldsBtn = document.getElementById('clearFieldsBtn');
 
@@ -885,42 +1134,107 @@ HTML_TEMPLATE = """
         // Helper Defaults
         const DEFAULTS = {
             name: "Devran Sever",
+            tc_no: "12345678901",
             student_id: "23091400016",
             year: "3rd",
             department: "Electrical and Electronics Engineering",
             course_code: "EEE 299",
-            company_name: "IT Operations & Software Development",
+            birth_place: "Istanbul",
+            birth_date: "15/04/2003",
+            father_name: "Ahmet",
+            mother_name: "Fatma",
+            student_email: "devransever@ogr.halic.edu.tr",
+            student_phone: "+90 555 123 4567",
+            academic_year: "2025 - 2026",
+            student_sign_date: "25/07/2026",
+            residence_address: "Ornek Mah. Ataturk Cad. No:14 D:5 Kadikoy / Istanbul",
+
+            company_name: "Teknoloji ve Yazilim Cozumleri A.S.",
+            company_address: "Buyukdere Cad. No:122 Levent / Besiktas / Istanbul",
             internship_department: "IT Operations & Software Engineering",
             company_field: "Information Technology & Software Development",
+            production_service_area: "Yazilim & Bilisim Cozumleri",
+            risk_range: "Az Tehlikeli (Low Risk)",
+            company_web: "www.teknolojias.com.tr",
+            company_phone: "(0212) 555 0100",
+            company_fax: "(0212) 555 0101",
+            company_email: "staj@teknoloji.com.tr",
+
+            employer_name: "Mehmet Yilmaz",
+            employer_title: "Engineering Manager",
+            employer_email: "mehmet.yilmaz@teknoloji.com.tr",
+            department_employees: "12 Employees",
+            acceptance_date: "28/07/2026",
+            evaluation_date: "18/09/2026",
+
             duration_workdays: "30 Workdays",
-            start_date: "2026-08-10"
+            start_date: "2026-08-10",
+            total_engineers: "18",
+            eee_engineers: "4",
+            total_employees: "45",
+            eee_need_explanation: "Hardware-software integration, system testing and network infrastructure projects.",
+            survey_explanation: "N/A - The enterprise provided strong technical mentorship, well-equipped hardware labs, and advanced database infrastructure."
         };
 
         resetDefaultsBtn.addEventListener('click', () => {
             studentName.value = DEFAULTS.name;
+            studentTc.value = DEFAULTS.tc_no;
             studentId.value = DEFAULTS.student_id;
             studentYear.value = DEFAULTS.year;
             studentDept.value = DEFAULTS.department;
             courseCode.value = DEFAULTS.course_code;
+            birthPlace.value = DEFAULTS.birth_place;
+            birthDate.value = DEFAULTS.birth_date;
+            fatherName.value = DEFAULTS.father_name;
+            motherName.value = DEFAULTS.mother_name;
+            studentEmail.value = DEFAULTS.student_email;
+            studentPhone.value = DEFAULTS.student_phone;
+            academicYear.value = DEFAULTS.academic_year;
+            studentSignDate.value = DEFAULTS.student_sign_date;
+            residenceAddress.value = DEFAULTS.residence_address;
+
             companyName.value = DEFAULTS.company_name;
+            companyAddress.value = DEFAULTS.company_address;
             internshipDept.value = DEFAULTS.internship_department;
             companyField.value = DEFAULTS.company_field;
+            productionServiceArea.value = DEFAULTS.production_service_area;
+            riskRange.value = DEFAULTS.risk_range;
+            companyWeb.value = DEFAULTS.company_web;
+            companyPhone.value = DEFAULTS.company_phone;
+            companyFax.value = DEFAULTS.company_fax;
+            companyEmail.value = DEFAULTS.company_email;
+
+            employerName.value = DEFAULTS.employer_name;
+            employerTitle.value = DEFAULTS.employer_title;
+            employerEmail.value = DEFAULTS.employer_email;
+            departmentEmployees.value = DEFAULTS.department_employees;
+            acceptanceDate.value = DEFAULTS.acceptance_date;
+            evaluationDate.value = DEFAULTS.evaluation_date;
+
             durationWorkdays.value = DEFAULTS.duration_workdays;
             startDateInput.value = DEFAULTS.start_date;
-            log('[i] Form alanları varsayılan öğrenci bilgileri ile dolduruldu.', 'info');
+            totalEngineers.value = DEFAULTS.total_engineers;
+            eeeEngineers.value = DEFAULTS.eee_engineers;
+            totalEmployees.value = DEFAULTS.total_employees;
+            eeeNeedExplanation.value = DEFAULTS.eee_need_explanation;
+            surveyExplanation.value = DEFAULTS.survey_explanation;
+
+            log('[i] Form alanları varsayılan öğrenci ve staj bilgileri ile dolduruldu.', 'info');
         });
 
         clearFieldsBtn.addEventListener('click', () => {
-            studentName.value = '';
-            studentId.value = '';
-            studentYear.value = '';
-            studentDept.value = '';
-            courseCode.value = '';
-            companyName.value = '';
-            internshipDept.value = '';
-            companyField.value = '';
-            durationWorkdays.value = '';
-            log('[i] Form alanları temizlendi.', 'info');
+            const allInputs = [
+                studentName, studentTc, studentId, studentYear, studentDept, courseCode,
+                birthPlace, birthDate, fatherName, motherName, studentEmail, studentPhone,
+                academicYear, studentSignDate, residenceAddress, companyName, companyAddress,
+                internshipDept, companyField, productionServiceArea, riskRange, companyWeb,
+                companyPhone, companyFax, companyEmail, employerName, employerTitle,
+                employerEmail, departmentEmployees, acceptanceDate, evaluationDate,
+                durationWorkdays, totalEngineers, eeeEngineers, totalEmployees,
+                eeeNeedExplanation, surveyExplanation
+            ];
+            allInputs.forEach(el => { if (el) el.value = ''; });
+            log('[i] Tüm form alanları temizlendi.', 'info');
         });
 
         // Terminal Log Helper
@@ -1126,16 +1440,51 @@ HTML_TEMPLATE = """
 
             // Collect all student & internship administrative fields
             const studentInfo = {
-                name: studentName.value.trim(),
-                student_id: studentId.value.trim(),
-                year: studentYear.value.trim(),
-                year_num: studentYear.value.replace(/[^0-9]/g, '') || "3",
-                department: studentDept.value.trim(),
-                course_code: courseCode.value.trim(),
-                company_name: companyName.value.trim(),
-                internship_department: internshipDept.value.trim(),
-                company_field: companyField.value.trim(),
-                duration_workdays: durationWorkdays.value.trim(),
+                // Student
+                name: studentName ? studentName.value.trim() : "",
+                tc_no: studentTc ? studentTc.value.trim() : "",
+                student_id: studentId ? studentId.value.trim() : "",
+                year: studentYear ? studentYear.value.trim() : "",
+                year_num: studentYear ? (studentYear.value.replace(/[^0-9]/g, '') || "3") : "3",
+                department: studentDept ? studentDept.value.trim() : "",
+                course_code: courseCode ? courseCode.value.trim() : "",
+                birth_place: birthPlace ? birthPlace.value.trim() : "",
+                birth_date: birthDate ? birthDate.value.trim() : "",
+                father_name: fatherName ? fatherName.value.trim() : "",
+                mother_name: motherName ? motherName.value.trim() : "",
+                email: studentEmail ? studentEmail.value.trim() : "",
+                phone: studentPhone ? studentPhone.value.trim() : "",
+                academic_year: academicYear ? academicYear.value.trim() : "",
+                student_sign_date: studentSignDate ? studentSignDate.value.trim() : "",
+                residence_address: residenceAddress ? residenceAddress.value.trim() : "",
+
+                // Company
+                company_name: companyName ? companyName.value.trim() : "",
+                company_address: companyAddress ? companyAddress.value.trim() : "",
+                internship_department: internshipDept ? internshipDept.value.trim() : "",
+                company_field: companyField ? companyField.value.trim() : "",
+                production_service_area: productionServiceArea ? productionServiceArea.value.trim() : "",
+                risk_range: riskRange ? riskRange.value.trim() : "",
+                company_web: companyWeb ? companyWeb.value.trim() : "",
+                company_phone: companyPhone ? companyPhone.value.trim() : "",
+                company_fax: companyFax ? companyFax.value.trim() : "",
+                company_email: companyEmail ? companyEmail.value.trim() : "",
+
+                // Employer
+                employer_name: employerName ? employerName.value.trim() : "",
+                employer_title: employerTitle ? employerTitle.value.trim() : "",
+                employer_email: employerEmail ? employerEmail.value.trim() : "",
+                department_employees: departmentEmployees ? departmentEmployees.value.trim() : "",
+                acceptance_date: acceptanceDate ? acceptanceDate.value.trim() : "",
+                evaluation_date: evaluationDate ? evaluationDate.value.trim() : "",
+
+                // Metrics & Survey
+                duration_workdays: durationWorkdays ? durationWorkdays.value.trim() : "30 Workdays",
+                total_engineers: totalEngineers ? totalEngineers.value.trim() : "18",
+                eee_engineers: eeeEngineers ? eeeEngineers.value.trim() : "4",
+                total_employees: totalEmployees ? totalEmployees.value.trim() : "45",
+                eee_need_explanation: eeeNeedExplanation ? eeeNeedExplanation.value.trim() : "",
+                survey_explanation: surveyExplanation ? surveyExplanation.value.trim() : ""
             };
             formData.append('student_info', JSON.stringify(studentInfo));
 
