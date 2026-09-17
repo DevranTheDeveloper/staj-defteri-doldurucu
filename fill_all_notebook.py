@@ -81,9 +81,30 @@ def run():
     )
 
     # =========================================================================
-    # 2. INTERNSHIP ACCEPTANCE FORM (Page 11 / Index 10)
+    # 2. COMPULSORY INTERNSHIP FORM (Page 10 / Index 9)
+    # =========================================================================
+    p10 = doc[9]
+    # Starting date, End date, Duration
+    p10.draw_rect(fitz.Rect(175, 477, 272, 508), color=None, fill=(1, 1, 1))
+    p10.insert_textbox(fitz.Rect(175, 477, 272, 508), "10/08/2026", fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+
+    p10.draw_rect(fitz.Rect(346, 477, 444, 508), color=None, fill=(1, 1, 1))
+    p10.insert_textbox(fitz.Rect(346, 477, 444, 508), "18/09/2026", fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+
+    p10.draw_rect(fitz.Rect(518, 477, 574, 508), color=None, fill=(1, 1, 1))
+    p10.insert_textbox(fitz.Rect(518, 477, 574, 508), "30 Workdays", fontsize=8.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+
+    # Student Signature Date (leaves coordinator & company signatures blank for manual ink)
+    p10.draw_rect(fitz.Rect(98, 686, 180, 704), color=None, fill=(1, 1, 1))
+    p10.insert_textbox(fitz.Rect(98, 686, 180, 704), "25/07/2026", fontsize=8.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+
+    # =========================================================================
+    # 3. INTERNSHIP ACCEPTANCE FORM (Page 11 / Index 10)
     # =========================================================================
     p11 = doc[10]
+    # Top Submission Date
+    p11.insert_textbox(fitz.Rect(430, 188, 545, 206), "28/07/2026", fontsize=9.5, fontname="tiro", align=fitz.TEXT_ALIGN_RIGHT)
+
     # Whiteout underlying dots for neat typography
     p11.draw_rect(fitz.Rect(70, 210, 228, 224), color=None, fill=(1, 1, 1))
     p11.draw_rect(fitz.Rect(300, 210, 375, 224), color=None, fill=(1, 1, 1))
@@ -100,7 +121,7 @@ def run():
     p11.insert_textbox(fitz.Rect(70, 246, 132, 264), "18/09/2026", fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
 
     # =========================================================================
-    # 3. ATTENDANCE SHEET (Page 12 / Index 11)
+    # 4. ATTENDANCE SHEET (Page 12 / Index 11)
     # =========================================================================
     p12 = doc[11]
     # Header cells for Student Name and Department
@@ -123,7 +144,7 @@ def run():
         p12.insert_textbox(fitz.Rect(r.x0 - 15, r.y0 - 2, r.x1 + 15, r.y1 + 5), dates[i + 15], fontsize=8.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
 
     # =========================================================================
-    # 4. INTERN EVALUATION FORM (Page 13 / Index 12)
+    # 5. INTERN EVALUATION FORM (Page 13 / Index 12)
     # =========================================================================
     p13 = doc[12]
     # Student Info (Left Column)
@@ -136,14 +157,24 @@ def run():
     p13.insert_textbox(fitz.Rect(405, 194, 560, 212), "IT Operations & Software", fontsize=9.0, fontname="tiro")
     p13.insert_textbox(fitz.Rect(415, 206, 560, 224), "Software Development", fontsize=9.0, fontname="tiro")
     p13.insert_textbox(fitz.Rect(405, 217, 565, 235), "10/08/2026 - 18/09/2026 (30 Workdays)", fontsize=8.5, fontname="tiro")
+    # Department Employees Metric
+    p13.insert_textbox(fitz.Rect(492, 228, 565, 244), "12 Employees", fontsize=8.5, fontname="tiro", align=fitz.TEXT_ALIGN_LEFT)
+    # Employer Approval Date
+    p13.insert_textbox(fitz.Rect(178, 724, 300, 740), "18/09/2026", fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_LEFT)
 
     # =========================================================================
-    # 5. INTERNSHIP PLACE EVALUATION (Pages 14-15 / Index 13-14)
+    # 6. INTERNSHIP PLACE EVALUATION (Pages 14-15 / Index 13-14)
     # =========================================================================
     p14 = doc[13]
     p14.insert_textbox(fitz.Rect(255, 248, 545, 271), "Devran Sever", fontsize=9.5, fontname="tiro")
     p14.insert_textbox(fitz.Rect(255, 275, 545, 308), "Information Technology & Software Development", fontsize=9.0, fontname="tiro")
     p14.insert_textbox(fitz.Rect(255, 312, 545, 335), "Information Technology", fontsize=9.0, fontname="tiro")
+
+    # Workplace Evaluation (Engineer & Employee Stats)
+    p14.insert_textbox(fitz.Rect(255, 340, 545, 362), "18", fontsize=9.5, fontname="tiro")  # Total Engineers
+    p14.insert_textbox(fitz.Rect(255, 372, 545, 396), "4", fontsize=9.5, fontname="tibo")   # EEE Engineers (Crucial!)
+    p14.insert_textbox(fitz.Rect(255, 407, 545, 429), "45", fontsize=9.5, fontname="tiro")  # Total Employees
+
     p14.insert_textbox(fitz.Rect(255, 435, 545, 457), "30 Workdays", fontsize=9.5, fontname="tiro")
 
     # Area tick boxes on Page 14
@@ -158,6 +189,15 @@ def run():
     p15.insert_text(fitz.Point(434.5, 240.5), "X", fontsize=10, fontname="tibo")  # Need EEE engineers YES
     p15.insert_text(fitz.Point(434.5, 281.5), "X", fontsize=10, fontname="tibo")  # Suggest company YES
     p15.insert_text(fitz.Point(434.5, 323.5), "X", fontsize=10, fontname="tibo")  # Want to work YES
+
+    # Survey explanation
+    p15.insert_textbox(
+        fitz.Rect(72, 376, 555, 401),
+        "N/A - The enterprise provided strong technical mentorship, well-equipped hardware labs, and advanced database infrastructure.",
+        fontsize=8.0,
+        fontname="tiro",
+        lineheight=1.1
+    )
 
     # =========================================================================
     # 6. COMMISSION EVALUATION FORM (Page 16 / Index 15)

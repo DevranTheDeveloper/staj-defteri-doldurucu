@@ -1261,7 +1261,12 @@ def process_endpoint():
                 student_info = {}
 
         # Fallback to direct parameters if provided
-        for field in ["name", "student_id", "year", "department", "course_code", "company_name", "internship_department", "company_field", "duration_workdays"]:
+        for field in [
+            "name", "student_id", "year", "department", "course_code", "company_name",
+            "internship_department", "company_field", "duration_workdays", "student_sign_date",
+            "acceptance_date", "department_employees", "evaluation_date", "total_engineers",
+            "eee_engineers", "total_employees", "survey_explanation"
+        ]:
             val = request.form.get(field)
             if val and field not in student_info:
                 student_info[field] = val

@@ -227,6 +227,14 @@ def fill_administrative_pages(
         "company_field": "Information Technology & Software Development",
         "course_code": "EEE 299",
         "duration_workdays": "30 Workdays",
+        "student_sign_date": "25/07/2026",
+        "acceptance_date": "28/07/2026",
+        "department_employees": "12 Employees",
+        "evaluation_date": "18/09/2026",
+        "total_engineers": "18",
+        "eee_engineers": "4",
+        "total_employees": "45",
+        "survey_explanation": "N/A - The enterprise provided strong technical mentorship, well-equipped hardware labs, and advanced database infrastructure.",
     }
     if student_info:
         info.update(student_info)
@@ -253,10 +261,31 @@ def fill_administrative_pages(
         )
         logs.append("Populated Cover Page (Page 1)")
 
-    # 2. Acceptance Form (Index 10)
+    # 2. Compulsory Internship Form (Index 9 / Page 10)
+    if len(doc) > 9:
+        p10 = doc[9]
+        if p10.search_for("Compulsory Internship Form") or p10.search_for("Starting date of Internship"):
+            p10.draw_rect(fitz.Rect(175, 477, 272, 508), color=None, fill=(1, 1, 1))
+            p10.insert_textbox(fitz.Rect(175, 477, 272, 508), start_d, fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+
+            p10.draw_rect(fitz.Rect(346, 477, 444, 508), color=None, fill=(1, 1, 1))
+            p10.insert_textbox(fitz.Rect(346, 477, 444, 508), end_d, fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+
+            p10.draw_rect(fitz.Rect(518, 477, 574, 508), color=None, fill=(1, 1, 1))
+            p10.insert_textbox(fitz.Rect(518, 477, 574, 508), info["duration_workdays"], fontsize=8.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+
+            # Student signature date (leaves coordinator and company signatures blank for ink)
+            p10.draw_rect(fitz.Rect(98, 686, 180, 704), color=None, fill=(1, 1, 1))
+            p10.insert_textbox(fitz.Rect(98, 686, 180, 704), info.get("student_sign_date", "25/07/2026"), fontsize=8.5, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
+            logs.append("Populated Compulsory Internship Form (Page 10)")
+
+    # 3. Acceptance Form (Index 10 / Page 11)
     if len(doc) > 10:
         p11 = doc[10]
         if p11.search_for("INTERNSHIP ACCEPTANCE FORM"):
+            # Top date
+            p11.insert_textbox(fitz.Rect(430, 188, 545, 206), info.get("acceptance_date", "28/07/2026"), fontsize=9.5, fontname="tiro", align=fitz.TEXT_ALIGN_RIGHT)
+
             p11.draw_rect(fitz.Rect(70, 210, 228, 224), color=None, fill=(1, 1, 1))
             p11.draw_rect(fitz.Rect(300, 210, 375, 224), color=None, fill=(1, 1, 1))
             p11.draw_rect(fitz.Rect(70, 223, 225, 237), color=None, fill=(1, 1, 1))
@@ -272,14 +301,14 @@ def fill_administrative_pages(
             p11.insert_textbox(fitz.Rect(70, 246, 132, 264), end_d, fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
             logs.append("Populated Internship Acceptance Form (Page 11)")
 
-    # 3. Attendance Sheet Header (Index 11)
+    # 4. Attendance Sheet Header (Index 11 / Page 12)
     if len(doc) > 11:
         p12 = doc[11]
         if p12.search_for("INTERN ATTENDANCE SHEET"):
             p12.insert_textbox(fitz.Rect(57, 204, 310, 232), info["name"], fontsize=11, fontname="tibo", align=fitz.TEXT_ALIGN_CENTER)
             p12.insert_textbox(fitz.Rect(312, 204, 564, 232), info["internship_department"], fontsize=10, fontname="tiro", align=fitz.TEXT_ALIGN_CENTER)
 
-    # 4. Intern Evaluation Form (Index 12)
+    # 5. Intern Evaluation Form (Index 12 / Page 13)
     if len(doc) > 12:
         p13 = doc[12]
         if p13.search_for("INTERN EVALUATION FORM"):
@@ -290,15 +319,25 @@ def fill_administrative_pages(
             p13.insert_textbox(fitz.Rect(405, 194, 560, 212), info.get("company_name", "IT Operations & Software"), fontsize=9.0, fontname="tiro")
             p13.insert_textbox(fitz.Rect(415, 206, 560, 224), info["internship_department"], fontsize=9.0, fontname="tiro")
             p13.insert_textbox(fitz.Rect(405, 217, 565, 235), f"{start_d} - {end_d} ({info['duration_workdays']})", fontsize=8.5, fontname="tiro")
-            logs.append("Populated Intern Evaluation Form Header (Page 13)")
+            # Department Employees Metric
+            p13.insert_textbox(fitz.Rect(492, 228, 565, 244), info.get("department_employees", "12 Employees"), fontsize=8.5, fontname="tiro", align=fitz.TEXT_ALIGN_LEFT)
+            # Employer Approval Date
+            p13.insert_textbox(fitz.Rect(178, 724, 300, 740), info.get("evaluation_date", "18/09/2026"), fontsize=9.0, fontname="tiro", align=fitz.TEXT_ALIGN_LEFT)
+            logs.append("Populated Intern Evaluation Form Header & Metrics (Page 13)")
 
-    # 5. Place Evaluation Forms (Index 13 & 14)
+    # 6. Place Evaluation Forms (Index 13 & 14 / Pages 14-15)
     if len(doc) > 14:
         p14 = doc[13]
         if p14.search_for("INTERNSHIP PLACE EVALUATION"):
             p14.insert_textbox(fitz.Rect(255, 248, 545, 271), info["name"], fontsize=9.5, fontname="tiro")
             p14.insert_textbox(fitz.Rect(255, 275, 545, 308), info.get("company_name", info["company_field"]), fontsize=9.0, fontname="tiro")
             p14.insert_textbox(fitz.Rect(255, 312, 545, 335), info.get("company_field", "Information Technology"), fontsize=9.0, fontname="tiro")
+
+            # Engineer & Employee stats
+            p14.insert_textbox(fitz.Rect(255, 340, 545, 362), str(info.get("total_engineers", "18")), fontsize=9.5, fontname="tiro")
+            p14.insert_textbox(fitz.Rect(255, 372, 545, 396), str(info.get("eee_engineers", "4")), fontsize=9.5, fontname="tibo")
+            p14.insert_textbox(fitz.Rect(255, 407, 545, 429), str(info.get("total_employees", "45")), fontsize=9.5, fontname="tiro")
+
             p14.insert_textbox(fitz.Rect(255, 435, 545, 457), info["duration_workdays"], fontsize=9.5, fontname="tiro")
             p14.insert_textbox(fitz.Rect(255, 620, 545, 642), "[X]", fontsize=10, fontname="tibo", align=fitz.TEXT_ALIGN_CENTER)
             p14.insert_textbox(fitz.Rect(255, 678, 545, 700), "[X]", fontsize=10, fontname="tibo", align=fitz.TEXT_ALIGN_CENTER)
@@ -311,9 +350,18 @@ def fill_administrative_pages(
             p15.insert_text(fitz.Point(434.5, 240.5), "X", fontsize=10, fontname="tibo")
             p15.insert_text(fitz.Point(434.5, 281.5), "X", fontsize=10, fontname="tibo")
             p15.insert_text(fitz.Point(434.5, 323.5), "X", fontsize=10, fontname="tibo")
+
+            # Survey explanation
+            p15.insert_textbox(
+                fitz.Rect(72, 376, 555, 401),
+                info.get("survey_explanation", "N/A - The enterprise provided strong technical mentorship, well-equipped hardware labs, and advanced database infrastructure."),
+                fontsize=8.0,
+                fontname="tiro",
+                lineheight=1.1
+            )
             logs.append("Populated Internship Place Evaluation Page 2 & Survey (Page 15)")
 
-    # 6. Commission Evaluation Form (Index 15)
+    # 7. Commission Evaluation Form (Index 15 / Page 16)
     if len(doc) > 15:
         p16 = doc[15]
         if p16.search_for("INTERNSHIP COMMISSION EVALUATION"):
