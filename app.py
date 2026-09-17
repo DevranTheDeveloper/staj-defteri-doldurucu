@@ -80,7 +80,7 @@ HTML_TEMPLATE = """
         }
 
         header {
-            padding: 2.5rem 1.5rem 1.5rem;
+            padding: 2.2rem 1.5rem 1.2rem;
             text-align: center;
         }
 
@@ -99,25 +99,25 @@ HTML_TEMPLATE = """
         }
 
         h1 {
-            font-size: 2.35rem;
+            font-size: 2.3rem;
             font-weight: 800;
             letter-spacing: -0.03em;
             background: linear-gradient(135deg, #ffffff 30%, #cbd5e1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.5rem;
         }
 
         p.subtitle {
             color: var(--text-muted);
-            font-size: 1rem;
-            max-width: 640px;
+            font-size: 0.98rem;
+            max-width: 680px;
             margin: 0 auto;
-            line-height: 1.6;
+            line-height: 1.55;
         }
 
         main {
-            max-width: 960px;
+            max-width: 980px;
             width: 100%;
             margin: 0 auto 3rem;
             padding: 0 1.25rem;
@@ -152,13 +152,13 @@ HTML_TEMPLATE = """
             background: var(--surface-card);
             border: 2px dashed var(--border);
             border-radius: 1rem;
-            padding: 1.5rem;
+            padding: 1.4rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: all 0.25s ease;
             position: relative;
-            min-height: 250px;
+            min-height: 220px;
         }
 
         .upload-card:hover {
@@ -183,12 +183,12 @@ HTML_TEMPLATE = """
             display: flex;
             align-items: center;
             gap: 0.85rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.85rem;
         }
 
         .icon-box {
-            width: 44px;
-            height: 44px;
+            width: 42px;
+            height: 42px;
             border-radius: 0.75rem;
             background: rgba(99, 102, 241, 0.15);
             color: #818cf8;
@@ -214,13 +214,13 @@ HTML_TEMPLATE = """
             color: var(--text-muted);
         }
 
-        /* Empty State */
+        /* Dropzone */
         .dropzone {
             border: 1px dashed rgba(255, 255, 255, 0.12);
             border-radius: 0.75rem;
-            padding: 1.2rem 1rem;
+            padding: 1rem;
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 0.85rem;
             cursor: pointer;
             transition: all 0.2s;
             background: rgba(0, 0, 0, 0.2);
@@ -232,7 +232,7 @@ HTML_TEMPLATE = """
         }
 
         .dropzone-text {
-            font-size: 0.85rem;
+            font-size: 0.825rem;
             color: var(--text-muted);
         }
 
@@ -246,15 +246,15 @@ HTML_TEMPLATE = """
             background: #090f1d;
             border: 1px solid rgba(16, 185, 129, 0.3);
             border-radius: 0.75rem;
-            padding: 0.85rem 1rem;
-            margin-bottom: 1rem;
+            padding: 0.75rem 0.9rem;
+            margin-bottom: 0.85rem;
         }
 
         .file-info-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.35rem;
         }
 
         .file-name {
@@ -267,7 +267,7 @@ HTML_TEMPLATE = """
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: 220px;
+            max-width: 210px;
         }
 
         .file-size {
@@ -294,6 +294,96 @@ HTML_TEMPLATE = """
             flex-wrap: wrap;
         }
 
+        /* Student & Internship Details Form Section */
+        .section-title-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #f8fafc;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .section-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .form-group-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #818cf8;
+            margin-bottom: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .input-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .field-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .form-field label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+
+        .form-field input {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.65rem 0.85rem;
+            border-radius: 0.6rem;
+            font-family: inherit;
+            font-size: 0.875rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .form-field input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+            background: #19253d;
+        }
+
+        .form-field .field-hint {
+            font-size: 0.725rem;
+            color: #64748b;
+        }
+
         /* Buttons */
         .btn {
             display: inline-flex;
@@ -314,6 +404,9 @@ HTML_TEMPLATE = """
             background: linear-gradient(135deg, var(--primary) 0%, #4338ca 100%);
             color: white;
             box-shadow: 0 10px 20px -5px var(--primary-glow);
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
         }
 
         .btn-primary:hover:not(:disabled) {
@@ -356,43 +449,16 @@ HTML_TEMPLATE = """
             transform: none !important;
         }
 
-        /* Config & Action Section */
-        .config-row {
+        /* Action Footer Bar */
+        .action-bar {
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
-            padding-top: 1.25rem;
+            padding-top: 1.5rem;
             border-top: 1px solid var(--border);
-            margin-top: 1.25rem;
-        }
-
-        .field-group {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        label {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        input[type="date"] {
-            background: var(--surface-card);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 0.55rem 0.85rem;
-            border-radius: 0.6rem;
-            font-family: inherit;
-            font-size: 0.875rem;
-            outline: none;
-        }
-
-        input[type="date"]:focus {
-            border-color: var(--primary);
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
         }
 
         /* Step 2: Result & Download Card */
@@ -435,7 +501,7 @@ HTML_TEMPLATE = """
         .result-desc {
             font-size: 0.95rem;
             color: #94a3b8;
-            max-width: 580px;
+            max-width: 600px;
             margin: 0 auto 1.5rem;
             line-height: 1.5;
         }
@@ -443,7 +509,7 @@ HTML_TEMPLATE = """
         .result-stats {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 1.25rem;
             margin-bottom: 1.75rem;
             flex-wrap: wrap;
         }
@@ -525,14 +591,15 @@ HTML_TEMPLATE = """
         </div>
         <h1>Staj Defteri Doldurucu</h1>
         <p class="subtitle">
-            Şablon yapısı otomatik taranır. 30 iş günü ve devam çizelgesi Times New Roman ile taşma olmaksızın enjekte edilir.
+            Tüm idari kapak ve onay sayfaları, devam çizelgesi ve 30 günlük raporlar girdiğiniz bilgilerle Times New Roman fontu ile milimetrik doldurulur.
         </p>
     </header>
 
     <main>
         <!-- Step 1: Input Setup -->
         <div class="glass-panel" id="inputPanel">
-            <div class="grid-2">
+            <!-- 1. File Uploads -->
+            <div class="grid-2" style="margin-bottom: 1.75rem;">
                 <!-- JSON Upload Card -->
                 <div class="upload-card" id="jsonCard">
                     <div>
@@ -544,15 +611,13 @@ HTML_TEMPLATE = """
                             </div>
                         </div>
 
-                        <!-- Dropzone (Hidden when file loaded) -->
                         <div class="dropzone" id="jsonDropzone">
                             <div class="dropzone-text">
-                                <div>📁 <strong>JSON Dosyası Seç</strong> veya buraya sürükle</div>
+                                <div>📁 <strong>JSON Dosyası Seç</strong> veya sürükle</div>
                                 <div style="font-size: 0.75rem; margin-top: 0.25rem; color: #64748b;">(Örnek: entries.json)</div>
                             </div>
                         </div>
 
-                        <!-- Loaded File Info Box -->
                         <div class="file-info-box" id="jsonInfoBox">
                             <div class="file-info-row">
                                 <span class="file-name" id="jsonFileName">dosya.json</span>
@@ -581,7 +646,6 @@ HTML_TEMPLATE = """
                             </div>
                         </div>
 
-                        <!-- Loaded File Info Box (Default active) -->
                         <div class="file-info-box" id="pdfInfoBox" style="display: block;">
                             <div class="file-info-row">
                                 <span class="file-name" id="pdfFileName">EEE-Internship Notebook.pdf</span>
@@ -592,7 +656,6 @@ HTML_TEMPLATE = """
                             </div>
                         </div>
 
-                        <!-- Dropzone (Hidden while default/loaded) -->
                         <div class="dropzone" id="pdfDropzone" style="display: none;">
                             <div class="dropzone-text">
                                 <div>📑 <strong>Kendi PDF Şablonunu Seç</strong> veya sürükle</div>
@@ -609,19 +672,109 @@ HTML_TEMPLATE = """
                 </div>
             </div>
 
-            <!-- Configuration & Step 1 Execute Button -->
-            <div class="config-row">
-                <div class="field-group">
-                    <label for="startDateInput">Staj Başlangıç Tarihi (Pzt):</label>
-                    <input type="date" id="startDateInput" value="2026-08-10">
+            <!-- 2. Student & Internship Details Form -->
+            <div class="section-title-bar">
+                <div>
+                    <div class="section-title">
+                        <span>📝</span> Öğrenci ve Staj Bilgileri
+                    </div>
+                    <div class="section-sub">
+                        PDF'teki Kapak, Kabul Formu, Devam Çizelgesi ve Değerlendirme sayfalarına basılacak alanlar.
+                    </div>
                 </div>
-
-                <div style="display: flex; gap: 0.75rem; align-items: center;">
-                    <a href="/api/sample-json" class="btn btn-secondary" download="entries.example.json">📥 Örnek JSON İndir</a>
-                    <button type="button" class="btn btn-primary" id="processBtn">
-                        <span>⚡</span> Defteri Doldur ve Düzenle
+                <div style="display: flex; gap: 0.5rem;">
+                    <button type="button" class="btn btn-secondary" id="resetDefaultsBtn" title="Varsayılan bilgileri geri yükle">
+                        <span>↺</span> Varsayılanları Yükle
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="clearFieldsBtn" title="Tüm alanları temizle">
+                        <span>🧹</span> Temizle
                     </button>
                 </div>
+            </div>
+
+            <div class="input-grid">
+                <!-- Column 1: Student Information -->
+                <div class="field-col">
+                    <div class="form-group-title">
+                        <span>🎓</span> Öğrenci Bilgileri
+                    </div>
+
+                    <div class="form-field">
+                        <label for="studentName">Öğrenci Adı Soyadı</label>
+                        <input type="text" id="studentName" value="Devran Sever" placeholder="Örn: Devran Sever">
+                        <span class="field-hint">Kapak, Kabul, Devam, Komisyon sayfalarına yazılır</span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="studentId">Öğrenci Numarası</label>
+                        <input type="text" id="studentId" value="23091400016" placeholder="Örn: 23091400016">
+                        <span class="field-hint">Kapak, Değerlendirme ve Komisyon formlarına yazılır</span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="studentYear">Sınıf / Yıl</label>
+                        <input type="text" id="studentYear" value="3rd" placeholder="Örn: 3rd veya 3">
+                        <span class="field-hint">Kabul formu ve komisyon sayfalarına yazılır</span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="studentDept">Üniversite Bölümü</label>
+                        <input type="text" id="studentDept" value="Electrical and Electronics Engineering" placeholder="Örn: Electrical and Electronics Engineering">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="courseCode">Staj Dersi Kodu</label>
+                        <input type="text" id="courseCode" value="EEE 299" placeholder="Örn: EEE 299">
+                        <span class="field-hint">Kapak sayfası Course ID alanına basılır</span>
+                    </div>
+                </div>
+
+                <!-- Column 2: Company & Internship Details -->
+                <div class="field-col">
+                    <div class="form-group-title">
+                        <span>🏢</span> Şirket ve Staj Detayları
+                    </div>
+
+                    <div class="form-field">
+                        <label for="companyName">Kurum / Şirket Adı</label>
+                        <input type="text" id="companyName" value="IT Operations & Software Development" placeholder="Örn: ASELSAN / HAVELSAN / Ar-Ge">
+                        <span class="field-hint">Değerlendirme ve yer inceleme formlarına yazılır</span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="internshipDept">Staj Yapılan Departman</label>
+                        <input type="text" id="internshipDept" value="IT Operations & Software Engineering" placeholder="Örn: IT Operations & Software Engineering">
+                        <span class="field-hint">Devam çizelgesi ve kabul formuna yazılır</span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="companyField">Faaliyet Alanı / Sektör</label>
+                        <input type="text" id="companyField" value="Information Technology & Software Development" placeholder="Örn: Information Technology">
+                        <span class="field-hint">Staj yeri değerlendirme formu sektör bilgisi</span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="durationWorkdays">Staj Süresi</label>
+                        <input type="text" id="durationWorkdays" value="30 Workdays" placeholder="Örn: 30 Workdays">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="startDateInput">Staj Başlangıç Tarihi (Pazartesi)</label>
+                        <input type="date" id="startDateInput" value="2026-08-10">
+                        <span class="field-hint">30 iş günü (Pzt-Cum) bu tarihten itibaren otomatik hesaplanır</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Bar -->
+            <div class="action-bar">
+                <a href="/api/sample-json" class="btn btn-secondary" download="entries.example.json">
+                    <span>📥</span> Örnek JSON Şablonunu İndir
+                </a>
+
+                <button type="button" class="btn btn-primary" id="processBtn">
+                    <span>⚡</span> Defteri Doldur ve Düzenle
+                </button>
             </div>
         </div>
 
@@ -630,7 +783,7 @@ HTML_TEMPLATE = """
             <div class="result-badge">✓ Düzenleme Başarıyla Tamamlandı</div>
             <div class="result-title">🎉 Staj Defteriniz Hazır!</div>
             <div class="result-desc">
-                Belirtilen tarihlere göre 30 iş günü hesaplandı, devam çizelgesi ve günlük rapor sayfaları Times New Roman ile milimetrik biçimde işlendi.
+                Öğrenci ve staj bilgileri kapak ve idari sayfalara işlendi, 30 iş günü devam çizelgesine yerleştirildi ve 30 günlük rapor sayfaları sıfır taşma ile dolduruldu.
             </div>
 
             <div class="result-stats">
@@ -659,9 +812,9 @@ HTML_TEMPLATE = """
                 <span id="terminalStatus" style="color: #94a3b8;">Hazır</span>
             </div>
             <div class="terminal-panel" id="terminal">
-                <div class="log-entry info">[Sistem] Dinamik Şablon İnceleme Motoru aktif ve hazır.</div>
-                <div class="log-entry info">[Adım 1] JSON dosyanızı seçin veya 'Örnek 30 Günü Yükle'ye tıklayın.</div>
-                <div class="log-entry info">[Adım 2] 'Defteri Doldur ve Düzenle' butonuna basarak işlemi başlatın.</div>
+                <div class="log-entry info">[Sistem] Dinamik Şablon İnceleme & Form Doldurma Motoru aktif.</div>
+                <div class="log-entry info">[Adım 1] Bilgilerinizi kontrol ediniz veya kendi öğrenci bilgilerinizi yazınız.</div>
+                <div class="log-entry info">[Adım 2] JSON dosyasını seçip 'Defteri Doldur ve Düzenle' butonuna tıklayınız.</div>
             </div>
         </div>
     </main>
@@ -671,7 +824,7 @@ HTML_TEMPLATE = """
     </footer>
 
     <script>
-        // DOM Elements
+        // DOM Elements - Uploads
         const jsonCard = document.getElementById('jsonCard');
         const jsonDropzone = document.getElementById('jsonDropzone');
         const jsonFileInput = document.getElementById('jsonFileInput');
@@ -695,7 +848,21 @@ HTML_TEMPLATE = """
         const pdfPagesPill = document.getElementById('pdfPagesPill');
         const pdfSub = document.getElementById('pdfSub');
 
+        // Form Fields
+        const studentName = document.getElementById('studentName');
+        const studentId = document.getElementById('studentId');
+        const studentYear = document.getElementById('studentYear');
+        const studentDept = document.getElementById('studentDept');
+        const courseCode = document.getElementById('courseCode');
+        const companyName = document.getElementById('companyName');
+        const internshipDept = document.getElementById('internshipDept');
+        const companyField = document.getElementById('companyField');
+        const durationWorkdays = document.getElementById('durationWorkdays');
         const startDateInput = document.getElementById('startDateInput');
+        const resetDefaultsBtn = document.getElementById('resetDefaultsBtn');
+        const clearFieldsBtn = document.getElementById('clearFieldsBtn');
+
+        // Actions & Results
         const processBtn = document.getElementById('processBtn');
         const resultContainer = document.getElementById('resultContainer');
         const downloadBtn = document.getElementById('downloadBtn');
@@ -706,9 +873,55 @@ HTML_TEMPLATE = """
 
         // State variables
         let selectedJsonFile = null;
-        let useDefaultJson = false;
+        let useDefaultJson = true; // start with default enabled for frictionless UX
         let selectedPdfFile = null;
         let useDefaultPdf = true;
+
+        // Automatically configure initial UI state for default JSON
+        window.addEventListener('DOMContentLoaded', () => {
+            setJsonLoaded('entries.json (Varsayılan)', '39.8 KB', 30);
+        });
+
+        // Helper Defaults
+        const DEFAULTS = {
+            name: "Devran Sever",
+            student_id: "23091400016",
+            year: "3rd",
+            department: "Electrical and Electronics Engineering",
+            course_code: "EEE 299",
+            company_name: "IT Operations & Software Development",
+            internship_department: "IT Operations & Software Engineering",
+            company_field: "Information Technology & Software Development",
+            duration_workdays: "30 Workdays",
+            start_date: "2026-08-10"
+        };
+
+        resetDefaultsBtn.addEventListener('click', () => {
+            studentName.value = DEFAULTS.name;
+            studentId.value = DEFAULTS.student_id;
+            studentYear.value = DEFAULTS.year;
+            studentDept.value = DEFAULTS.department;
+            courseCode.value = DEFAULTS.course_code;
+            companyName.value = DEFAULTS.company_name;
+            internshipDept.value = DEFAULTS.internship_department;
+            companyField.value = DEFAULTS.company_field;
+            durationWorkdays.value = DEFAULTS.duration_workdays;
+            startDateInput.value = DEFAULTS.start_date;
+            log('[i] Form alanları varsayılan öğrenci bilgileri ile dolduruldu.', 'info');
+        });
+
+        clearFieldsBtn.addEventListener('click', () => {
+            studentName.value = '';
+            studentId.value = '';
+            studentYear.value = '';
+            studentDept.value = '';
+            courseCode.value = '';
+            companyName.value = '';
+            internshipDept.value = '';
+            companyField.value = '';
+            durationWorkdays.value = '';
+            log('[i] Form alanları temizlendi.', 'info');
+        });
 
         // Terminal Log Helper
         function log(msg, type='info') {
@@ -881,7 +1094,6 @@ HTML_TEMPLATE = """
 
         // ================= STEP 1: Process Internship Notebook =================
         processBtn.addEventListener('click', async () => {
-            // Validate JSON
             if (!selectedJsonFile && !useDefaultJson) {
                 alert('Lütfen önce staj günlüklerinizi içeren JSON dosyasını yükleyin veya "Örnek 30 Günü Yükle"ye tıklayın.');
                 return;
@@ -892,10 +1104,10 @@ HTML_TEMPLATE = """
             terminalStatus.textContent = 'İşleniyor...';
             terminalStatus.style.color = '#f59e0b';
 
-            // Clean terminal
             terminal.innerHTML = '';
             log('[1/4] Dinamik Şablon Analiz Motoru başlatıldı...', 'info');
-            log(`[2/4] Başlangıç Tarihi: ${startDateInput.value} (30 iş günü hesaplanıyor)...`, 'info');
+            log(`[2/4] Öğrenci: ${studentName.value} (No: ${studentId.value})`, 'info');
+            log(`[3/4] Başlangıç Tarihi: ${startDateInput.value} (30 iş günü hesaplanıyor)...`, 'info');
 
             const formData = new FormData();
             if (selectedJsonFile) {
@@ -911,6 +1123,21 @@ HTML_TEMPLATE = """
             }
 
             formData.append('start_date', startDateInput.value);
+
+            // Collect all student & internship administrative fields
+            const studentInfo = {
+                name: studentName.value.trim(),
+                student_id: studentId.value.trim(),
+                year: studentYear.value.trim(),
+                year_num: studentYear.value.replace(/[^0-9]/g, '') || "3",
+                department: studentDept.value.trim(),
+                course_code: courseCode.value.trim(),
+                company_name: companyName.value.trim(),
+                internship_department: internshipDept.value.trim(),
+                company_field: companyField.value.trim(),
+                duration_workdays: durationWorkdays.value.trim(),
+            };
+            formData.append('student_info', JSON.stringify(studentInfo));
 
             try {
                 const response = await fetch('/api/process', {
@@ -928,7 +1155,7 @@ HTML_TEMPLATE = """
                 if (data.logs && Array.isArray(data.logs)) {
                     data.logs.forEach(l => {
                         let type = 'info';
-                        if (l.includes('Successfully') || l.includes('Injected') || l.includes('Detected')) type = 'success';
+                        if (l.includes('Successfully') || l.includes('Injected') || l.includes('Detected') || l.includes('Populated')) type = 'success';
                         if (l.includes('[!]') || l.includes('Warning')) type = 'warning';
                         log(l, type);
                     });
@@ -945,7 +1172,6 @@ HTML_TEMPLATE = """
                 downloadBtn.innerHTML = `<span>📥</span> Doldurulmuş PDF'i İndir (${data.file_size})`;
                 previewBtn.href = `/api/preview/${data.token}`;
 
-                // Smoothly show result container and scroll to it
                 resultContainer.style.display = 'block';
                 resultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
@@ -1025,10 +1251,30 @@ def process_endpoint():
 
         start_date_str = request.form.get("start_date", "2026-08-10")
 
-        # 3. Process with Dynamic Inspection Engine
-        output_bytes, logs = process_internship_notebook(pdf_bytes, entries, start_date_str)
+        # 3. Parse Student Information
+        student_info = {}
+        student_info_raw = request.form.get("student_info")
+        if student_info_raw:
+            try:
+                student_info = json.loads(student_info_raw)
+            except Exception:
+                student_info = {}
 
-        # 4. Cache generated PDF with unique token
+        # Fallback to direct parameters if provided
+        for field in ["name", "student_id", "year", "department", "course_code", "company_name", "internship_department", "company_field", "duration_workdays"]:
+            val = request.form.get(field)
+            if val and field not in student_info:
+                student_info[field] = val
+
+        # 4. Process with Dynamic Inspection Engine
+        output_bytes, logs = process_internship_notebook(
+            pdf_bytes,
+            entries,
+            start_date_str,
+            student_info=student_info
+        )
+
+        # 5. Cache generated PDF with unique token
         token = uuid.uuid4().hex[:16]
         with CACHE_LOCK:
             GENERATED_CACHE[token] = {
